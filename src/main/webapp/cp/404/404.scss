@@ -1,0 +1,22 @@
+@import '../../public/css-dev/common';
+@import '../../public/css-dev/component';
+
+.not-found{
+	i{
+		float: left;
+	    margin-top: 26px;
+		font-size: 60px;
+		color: $cWarning;
+	}
+	.content{
+	    float: left;
+		margin-left: 10px;
+		font-style: normal;
+		em{
+			font-style: normal;
+		}
+		a{
+			color: $cMain;
+		}
+	}
+}

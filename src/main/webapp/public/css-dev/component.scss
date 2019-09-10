@@ -1,0 +1,243 @@
+@import './base';
+//区域卡片
+$cbArea: #fff;
+.area{
+	margin-bottom: $spNormal;
+	padding: $spNormal;
+	min-width: 100px;
+}
+
+//标题
+.title{
+	font-size: $fsH1;
+	padding: $spNormal 0;
+}
+.sub-title{
+	padding-bottom: $spNormal;
+	font-size: $fsH3;
+}
+
+//按钮
+%c-btn{
+	padding: $spSmall $spNormal;
+	font-size: $fsH5;
+	border-radius: $spSmall !important;
+	background-color: $cbMain;
+}
+%c-btn-disabled{
+	background-color: #bbb;
+	border-color: #bbb;
+	color: $white;
+	cursor: not-allowed;
+}
+.c-btn,
+.c-btn-normal{
+	@extend %c-btn;
+	border: 1px solid $cNormal;
+	color: $cNormal;
+	&:active{
+		outline: none;
+	}
+	&:focus{
+		outline: none;
+	}
+	&:hover{
+		background-color: $cNormal;
+		color: $cbMain;
+	}
+}
+.c-btn-warning{
+	@extend %c-btn;
+	border: 1px solid $cWarning;
+	color: $cWarning;
+	&:active{
+		outline: none;
+	}
+	&:focus{
+		outline: none;
+	}
+	&:hover{
+		background-color: $cWarning;
+		color: $cbMain;
+	}
+}
+.c-btn[disabled],
+.c-btn-normal[disabled]{
+	@extend %c-btn-disabled;
+	&:hover{
+		@extend %c-btn-disabled;
+	}
+}
+.c-btn-warning[disabled]{
+	@extend %c-btn-disabled;
+	&:hover{
+		background-color: $cbMain;
+		border: 1px solid $cWarning;
+		color: $cWarning;
+	}
+}
+
+//暂无数据
+.no-data{
+	padding: 20px 0;
+	text-align: center;
+	i{
+		font-size: $fsLarge;
+		color: $cMain;
+	}
+	.content{
+		display: inline-block;
+		margin-left: 10px;
+		font-size: $fsH5;
+		color: #888;
+    	vertical-align: 5px;
+	}
+}
+
+//弹窗
+@mixin pop-style( $color: $cMain ){
+	.modal-content{
+		border: 1px solid $color;
+	}
+    .pop-header{
+		background-color: $color;
+	}
+	.pop-body{
+		color: $color;
+	}
+	.pop-footer{
+		button{
+			color: $color;
+			border-color: $color;
+			&:hover{
+				color: $white;
+				background-color: $color;
+				border-color: $color;
+			}
+		}
+	}
+}
+.pop{
+	.modal-dialog{
+		position: absolute;
+	    top: 40%;
+	    left: 50%;
+		width: 30%;
+		max-width: 400px;
+		text-align: center;
+		.modal-content{
+			transform: translate( -50%, -50% );
+		}
+	}
+	.pop-header{
+		padding: $spSmall;
+		.pop-title{
+			color: $white;
+		}
+	}
+	.pop-body{
+		display: flex;
+	    align-items: center;
+	    justify-content: center;
+	    i{
+	    	font-size: $fsLarge;
+	    }
+		.pop-text{
+			display: inline-block;
+			margin-left: $spNormal;
+		    max-width: 80%;
+		    text-align: left;
+		    word-wrap: break-word;
+		    word-break: break-all;
+		}
+	}
+	.pop-footer{
+		text-align: center;
+		border-top: none;
+		button{
+			padding: 2px 15px;
+			background-color: $white;
+			border-radius: $spSmall !important;
+		}
+	}
+	&.pop-normal{
+		@include pop-style( $cNormal );
+	}
+	&.pop-sure{
+		@include pop-style( $cNormal );
+	}
+	&.pop-success{
+		@include pop-style( $cSuccess );
+	}
+	&.pop-warning{
+		@include pop-style( $cWarning );
+	}
+	&.pop-error{
+		@include pop-style( $cError );
+	}
+}
+
+//漏洞标识
+.vul-wrapper{
+	padding-left: 9px;
+}
+.vul{
+	display: inline-block;
+    min-width: 27px;
+	padding: 3px 0;
+	color: $gray;
+    text-align: center;
+
+	&.vul-extremHigh{
+		background-color: $extremeHigh;
+		color: $white;
+	}
+	&.vul-high{
+		background-color: $high;
+		color: $white;
+	}
+	&.vul-mid{
+		background-color: $mid;
+		color: $white;
+	}
+	&.vul-low{
+		background-color: $low;
+		color: $white;
+	}
+}
+
+.error-serious{
+	background-color: $extremeHigh;
+}
+.error-mid{
+	background-color: $high;
+}
+.error-common{
+	background-color: $mid;
+}
+
+.loading{
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 40%;
+	width: 100%;
+	text-align: center;
+	&>img{
+		height: 50px;
+	}
+}
+
+.page-mask{
+	display: none;
+	position: absolute;
+	z-index: 4;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: #fff; opacity: 0.5; cursor: not-allowed;
+	&>ul{
+		cursor:pointer;
+	}
+}

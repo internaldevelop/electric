@@ -1,0 +1,15 @@
+.text-right{text-align:right}.text-left{text-align:left}.text-center,.center{text-align:center}.relative{position:relative}.absolute{position:absolute}.fixed{position:fixed}.float,.float-left{float:left}.float-right{float:right}.clear:after{content:".";display:block;height:0;visibility:hidden;clear:both}.page-sidebar{
+width:130px!important;}
+.page-content-wrapper .page-content{
+    margin-left: 130px!important;
+}
+.page-content-wrapper .page-content{
+	padding:40px 15px!important;
+}
+.row{
+margin-left:0px!important;
+margin-right:0px!important;
+}
+.system-title{
+    font-size:24px;
+}

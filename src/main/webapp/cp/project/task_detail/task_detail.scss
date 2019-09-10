@@ -1,0 +1,221 @@
+@import '../../../public/css-dev/common';
+@import '../../../public/css-dev/component';
+//任务概览
+.basic{
+	padding: $spSmall 0;
+	li{
+		float: left;
+		width: 25%;
+		padding: $spSmall 0;
+		font-size: $fsH5;
+		em{
+			 padding: 0 $spSmall;
+			font-style: normal;
+		    font-size: $fsH2;
+		    color: $cMain;
+		}
+	}
+}
+
+#reportForm{
+	position: absolute;
+    top: 6px;
+    left: 150px;
+    .c-btn:hover a{
+    	color: $white;
+    }
+    a{
+    	color: $cMain;
+    	&:active{
+    		text-decoration: none;
+    	}
+    	&:hover{
+    		color: $white;
+    		text-decoration: none;
+    	}
+    	&:focus{
+    		text-decoration: none;
+    	}
+    }
+}
+
+.ctrl{
+	position: absolute;
+	width: 150px;
+    height: 170px;
+	top: -20px;
+    right: 0;
+    text-align: center;
+
+    .btn-stop{
+    	width: 100%;
+    	margin-top: 10px;
+    }
+}
+
+#progress{
+	margin-right: 150px;
+}
+
+//总体进度
+.progress-wrapper{
+	width: 130px;
+	height: 130px;
+	margin-left: 10px;
+	&.running{
+		.outer-circle{
+			animation: rotate 3s linear infinite;
+		}
+	}
+	.content{
+		position: relative;
+		width: 100%;
+		height: 100%;
+		padding: 10px;
+		.outer-circle{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-image: url("../img/round.png");
+			background-size: 100% 100%;
+		}
+		.bg{
+			transform: rotate(0);
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			width: 110px;
+			height: 110px;
+			overflow: hidden;
+			text-align: center;
+			color: #fff;
+			background-color: #66aee3;
+			border-radius: 50% !important;
+			.number{
+				position: relative;
+				z-index: 1;
+				margin: 0;
+				color: #fff;
+				font-size: 24px;
+				line-height: 110px;
+				em{
+					font-size: 40px;
+					font-style: italic;
+				}
+			}
+			.wave{
+				position: absolute;
+				top: 50%;
+				width: 380px;
+				height: 100%;
+				background-size: 190px 100%;
+				height: 100%;
+  				background-image: url("../img/low.png");
+  				animation: move 3s linear 0s infinite;
+			}
+			@at-root{
+				@keyframes move{
+					0%{
+						background-position: 0% 0;
+					}
+					100%{
+						background-position: 100% 0;
+					}
+				}
+				@keyframes rotate{
+					0%{
+						transform: rotate(0);
+					}
+					100%{
+						transform: rotate(-359deg);
+					}
+				}
+			}
+			
+		}
+	}
+}
+
+//子模块进度条
+.c-progress{
+	padding: $spSmall 0 $spSmall 0;
+	li{
+		width: 25%;
+		float: left;
+		.title{
+			padding: $spSmall;
+			font-size: $fsH5;
+			text-align: center;
+			border-right: 1px solid $gray;
+		}
+		.bar-wrapper{
+			background-color: lighten( $cMain, 35% );
+			.bar{
+				height: 10px;
+				background-color: $cMain;
+			}
+		}
+	}
+	li:first-child{
+		.title{
+			border-left: 1px solid #ccc;
+		}
+	}
+}
+
+//设备列表区
+.page-list{
+	.filter{
+		font-size: $fsH5;
+		.operate{
+			display: inline-block;
+			.kw{
+				height: 24px;
+			}
+			i:hover{
+				color: $cMain;
+			}
+		}
+		.title{
+			display: inline-block;
+			margin-left: $spLarge;
+			font-size: $fsH5;
+			em{
+				color: $cMain;
+				font-style: normal;
+			}
+		}
+	}
+}
+
+//排序
+.table thead .sort{
+	user-select: none;
+    cursor: default;
+	background: url( '../img/sort_both.png' ) center right no-repeat;
+	background-color: $cMain;
+	&.sort_asc{
+		background-image: url( '../img/sort_asc.png' );
+	}
+	&.sort_desc{
+		background-image: url( '../img/sort_desc.png' );
+	}
+}
+
+//图表区
+.item{
+	padding-bottom: $spLarge;
+	.title{
+		padding: 0;
+		font-size: $fsH5;
+		text-align: center;
+	}
+	&>.content.pie{
+		height: 150px;
+	}
+	&>.content.bar{
+		height: 250px;
+	}
+}

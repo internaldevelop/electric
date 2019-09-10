@@ -1,0 +1,67 @@
+/*
+ * c: color
+ * fs:font-size
+*/
+
+//主要颜色
+$cMain: #36c6d3; //主色
+$cFirst: ; //第一辅色
+$cSecond: ; //第二辅色
+$cThree: ; //第三辅色
+$cFour: ; //第四辅色
+
+$gray: #c6cfda;
+$white: #fff;
+
+//各种提示颜色
+$cNormal: $cMain;
+$cWarning: #f76521;
+$cSuccess: $cMain;
+$cError: #f70501;
+
+$extremeHigh: #f70501;
+$high: #f76521;
+$mid: #ffba10;
+$low: #36c6d3;
+
+//各种背景色
+$cbMain: #fff; //内容区域背景色
+$cbBody: #fff; //body背景色
+
+
+//各种字体颜色
+
+
+//主要字体大小
+$fsMain: 14px; //主字体
+$fsLogo: 20px; 
+$fsLarge: 30px;
+$fsH1: 24px;
+$fsH2: 22px;
+$fsH3: 20px;
+$fsH4: 18px;
+$fsH5: 16px;
+
+//主要间隔
+$spSmall: 5px;
+$spNormal: 10px;
+$spMiddle: 15px;
+$spLarge: 20px;
+
+
+
+/*字体样式*/
+.text-right{ text-align: right; }
+.text-left{ text-align: left; }
+.text-center,
+.center{ text-align: center; }
+
+/*位置样式*/
+.relative{ position: relative; }
+.absolute{ position: absolute; }
+.fixed{ position: fixed; }
+
+/*浮动相关*/
+.float, .float-left{ float: left; }
+.float-right{ float: right; }
+.clear:after{ content:"."; display:block; height:0; visibility:hidden; clear:both; }

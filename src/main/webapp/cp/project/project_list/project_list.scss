@@ -1,0 +1,11 @@
+@import '../../../public/css-dev/common';
+@import '../../../public/css-dev/component';
+
+//子模块进度条
+.table{
+	.ellipsis{
+		max-width: 200px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+}

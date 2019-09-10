@@ -1,0 +1,86 @@
+@import '../../../public/css-dev/common';
+@import '../../../public/css-dev/component';
+
+/*
+.form-horizontal{
+	position: relative;
+	margin-bottom: $spNormal;
+	padding: $spNormal;
+	background-color: rgba(200,200,200,0.4);
+	&:after{
+		content:"";
+		position: absolute;
+		top: 0;
+		right: 0;
+		display: block;
+		border-width: 0 16px 16px 0;
+		border-color: #fff #fff transparent transparent;
+		box-shadow: -1px 1px 1px rgba(0,0,0,0.3);
+		border-style: solid;
+		width:0;
+	}
+}*/
+    
+/*接收者列表*/
+.receive{
+	padding-top: 7px;
+	color: $white;
+	.item{
+		display: inline-block;
+		margin: 0 $spNormal $spNormal 0;
+		padding: $spSmall $spNormal;
+		background: #217ebd;
+		.delete{
+			opacity: .5;
+			&:hover{
+				opacity: 1;
+				cursor: pointer;
+			}
+		}
+	}
+	.no-receiver{
+		display: inline-block;
+		vertical-align: top;
+		color: #333;
+	}
+}
+
+/*添加接收者*/
+.add-wrapper{
+	display: -webkit-box;
+	display: box;
+	.item{
+		display: -webkit-box;
+		display: box;
+		max-width: 200px;
+		padding-right: $spLarge;
+		input{
+			-webkit-box-flex: 1;
+    		box-flex: 1;
+		}
+		input.error{
+			border: 2px solid $cError;
+			animation: shining .5s linear 0s 2;
+			@at-root{
+				@keyframes shining{
+					0%{
+						border-color: $cError;
+					}
+					50%{
+						border-color: $gray;
+					}
+				}
+			}
+		}
+		.add-title{
+			padding-right: $spSmall;
+			vertical-align: -7px;
+		}
+	}
+	.add-name{
+		width: 20%;
+	}
+	.add-addr{
+		width: 50%;
+	}
+}

@@ -1,0 +1,29 @@
+@import '../../../public/css-dev/common';
+@import '../../../public/css-dev/component';
+
+#charts{ height: 300px; }
+
+//操作按钮
+.btn-group{
+	position: absolute;
+	right: 10px;
+	z-index: 1;
+	.c-btn{
+		margin: 0 10px;
+	}
+}
+
+#config{
+	.modal-title{ font-size: $fsH3; }
+	.modal-body{ overflow: auto; }
+	.form {
+		.title{ margin-top: 18px; margin-bottom: 6px; font-size: $fsH4; }
+		.title:first-child{ margin-top: 0; }
+	}
+	.form .form-body{ padding-top: 0; }
+	.c-list{
+		margin-bottom: 8px;
+		&:hover{ background: #ddd; }
+		.c-content{ padding-top: 7px; }
+	}
+}

@@ -1,0 +1,209 @@
+@import './base';
+/*css reset*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+html, body{ height: 100%; }
+body {
+	line-height: 1;
+	font-family:"Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体";
+}
+h1, h2, h3, h4, h5, h6{
+	font-family:"Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体";
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/*
+ * 基本样式
+*/
+.table{ $fsH5: 16px;
+	&>thead>tr>th{
+		border: 1px solid $gray;
+		background-color: $cMain;
+		text-align: center;
+		font-weight: normal;
+		font-size: $fsH5;
+
+		&.text-left{
+			text-align: left;
+		}
+	}
+	&>tbody>tr>td{
+		border: 1px solid $gray;
+	}
+	&>tbody>tr:hover,
+	&>tbody>tr:hover>td
+	{
+		background-color: lighten( $cMain, 35% ) !important;
+	}
+}
+
+.page-content-wrapper .main-content{
+	position: relative;
+}
+
+.operate a{
+	margin: 0 10px;
+	color: $cMain;
+	&:active, &:focus, &:hover{
+		color: $cMain;
+		&.disabled{
+			color: $gray;
+			text-decoration: none;
+		}
+	}
+	&:focus{
+		text-decoration: none;
+	}
+}
+
+
+//页面头部和侧边栏
+$cbNav: #1e2b36; //背景颜色
+html,
+body{ height: 100%; background: $cbNav; font-family:"Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体"; }
+
+.system-title{
+	float: left;
+	margin: $spNormal;
+	padding:0;
+	font-size: 30px;
+	color: $cbMain;
+}
+
+.top-menu{
+	.user{
+		padding-top: 18px;
+		color: $gray;
+	}
+	.sign-out{
+		a{
+			color: $gray;
+			&:hover{
+				background-color: $cbNav;
+				color: $gray;
+			}
+		}
+	}
+}
+
+.page-sidebar,
+.page-header.navbar{
+	background: $cbNav;
+}
+.page-sidebar .title{
+	font-size: $fsMain;
+}
+.page-sidebar .page-sidebar-menu>li.active.open>a:hover,
+.page-sidebar .page-sidebar-menu>li.active>a:hover,
+.page-sidebar .page-sidebar-menu>li.active.open>a,
+.page-sidebar .page-sidebar-menu>li.active>a{
+	background: $cMain;
+}
+
+//主体区域
+.page-content-wrapper .page-content{
+	padding: 40px;
+	background-color: $cbBody;
+}
+.page-container-bg-solid .page-bar,
+.page-content-white .page-bar{
+	background-color: $cbBody;
+}
+.page-content-white .page-content .page-bar{
+	border-bottom: none;
+}
+
+/*表单验证*/
+label.error{
+	color: $cError;
+}
+form .exist{ display: none; margin-bottom: 20px; color: red; }
+
+/**/
+.rotate{ animation: rotate 2s linear 0s infinite; }
+@keyframes rotate{
+	0%{
+		transform: rotate(0deg);
+	}
+	100%{
+		transform: rotate(359deg);
+	}
+}
+
+.roll{ animation: roll 10s linear 0s infinite; }
+@keyframes roll{
+	0%{
+		transform: rotate(0deg);
+	}
+	10%{
+		transform: rotate(180deg);
+	}
+	50%{
+		transform: rotate(180deg);
+	}
+	60%{
+		transform: rotate(359deg);
+	}
+	100%{
+		transform: rotate(359deg);
+	}
+}
+
+
+
+//分页样式
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover{
+	background-color: $cMain;
+	border-color: $cMain;
+}
+.pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover{
+	color: $cMain;
+}
+.pagination>li>a{
+	color: $cMain;
+}
+
+
+.page-sidebar{
+width:130px!important;}
+.page-content-wrapper .page-content{
+    margin-left: 130px!important;
+}
+
+

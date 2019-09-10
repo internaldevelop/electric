@@ -1,0 +1,33 @@
+@import '../../../public/css-dev/common';
+@import '../../../public/css-dev/component';
+
+.form-control[disabled], .form-control[readonly] {
+    opacity: 0.6;
+}
+
+.net-config{
+	padding-top: 10px;
+}
+.slider-track, .slider-selection{
+	border-radius: 4px !important;
+}
+.slider-handle.round{
+	border-radius: 50% !important;
+}
+#config .mask{
+	display: none;
+	position: absolute;
+	left:0;
+	bottom: 150px;
+	width: 100%;
+	height: 250px;
+	background: rgba(255,255,255,0.6);
+	opacity: 0.9;
+}
+.slider-selection {
+	background: #BABABA;
+}
+
+.bandwidth-wrapper{
+	padding-top: 6px;
+}

@@ -1,0 +1,53 @@
+@import '../../../public/css-dev/common';
+@import '../../../public/css-dev/component';
+
+form{
+	text-align: center;
+	.area{
+		text-align: left;
+		.sub-title{
+			font-size: $fsH5;
+		}
+	}
+	.portlet.light>.portlet-title>.nav-tabs>li>a{
+		font-size: $fsH5;
+	}
+}
+
+.extra-info .portlet-title{
+	margin-bottom: 0;
+}
+
+#space-error {
+	float: left;
+	width: 100%;
+}
+
+.cycle{
+	display: none;
+}
+
+textarea {
+	resize: none;
+}
+
+.form-group select {
+	width: 116px;
+}
+
+.scan-type {
+	padding-top: 0 !important;
+}
+
+.scan-type label.mt-checkbox:first-child {
+	margin-right: 0;
+}
+
+.scan-type label.mt-checkbox {
+	margin-right: 40px;
+}
+
+.scan-type select {
+	display: inline;
+	margin-right: 40px;
+}

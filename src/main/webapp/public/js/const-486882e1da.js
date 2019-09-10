@@ -1,0 +1,1 @@
+var RUNNING="正在执行",WAITING="排队中";module.exports.RUNNING=RUNNING,module.exports.WAITING=WAITING;
