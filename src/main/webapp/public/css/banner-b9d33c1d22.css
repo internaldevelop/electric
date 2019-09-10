@@ -191,12 +191,12 @@ table {
     font-weight: normal;
     font-size: 14px
 }
-.table>thead>tr>th:nth-child(1){    width: 7%;}
+.table>thead>tr>th:nth-child(1){    width: 8%;}
 .table>thead>tr>th:nth-child(2){    width: 80px;}
 .table>thead>tr>th:nth-child(3){    width: 100px;}
 .table>thead>tr>th:nth-child(4){    width: 100px;}
 .table>thead>tr>th:nth-child(5){    width: 100px;}
-.table>thead>tr>th:nth-child(6){    width: 100px;}
+.table>thead>tr>th:nth-child(6){    width: 200px;}
 .table>thead>tr>th:nth-child(7){    width: 165px;}
 .table>thead>tr>th:nth-child(8){}
 .table>thead>tr>th.text-left {

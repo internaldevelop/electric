@@ -12,6 +12,7 @@ public class VulDetail {
     private String checkedState;
     private String hasCheckedScript;
     private String source;
+    private String flag;
 
     public String getVulID() {
         return vulID;
@@ -99,5 +100,13 @@ public class VulDetail {
 
     public void setSource(String source) {
         this.source = source;
+    }
+
+    public String getFlag() {
+        return flag;
+    }
+
+    public void setFlag(String flag) {
+        this.flag = flag;
     }
 }

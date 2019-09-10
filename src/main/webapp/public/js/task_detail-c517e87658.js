@@ -42,7 +42,7 @@ var Table = React.createClass( {displayName: "Table",
   render: function() {
     var lists = [],
       startIndex = this.state.startIndex,
-      colspan = 8;
+      colspan = 7;
 
     lists = this.state.data.map( function( list, index ) {
       return React.createElement(TableCell, {key: index+1, index: startIndex+index+1, data: list})

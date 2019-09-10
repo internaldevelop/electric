@@ -146,7 +146,7 @@ public class TaskSchedueModule {
         cmd += " " + "--SD-scan-type" + " " + project.getScanType();
         //指定要扫描的具体端口
         if (project.getSdAdditionPortTcp().equals("") && project.getSdAdditionPortUdp().equals("")) {
-            cmd += " " + "--SD-addition-port" + " " + "T:102 502 9600 2404 20000 2404" + " " + "U:161";
+            cmd += " " + "--SD-addition-port" + " " + "T:102 502 9600 2404 20000 2404 5556 5562" + " " + "U:161";
         }
 //        if (!project.getSdAdditionPortTcp().equals("") && project.getSdAdditionPortUdp().equals("")) {
 //            cmd += " " + "--SD-addition-port" + " " + "T:102 502 9600 2404 20000" + " " + project.getSdAdditionPortTcp() + " U:161";

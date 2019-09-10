@@ -114,16 +114,24 @@ public class UserService extends BaseService {
     }
 
     //添加一个检查员(-1:用户已经存在,-2：两次输入的密码不对)
-    public int addChecker(String userType,String checkerName, String realName, String passwd,
+    public int addChecker(String userType, String checkerName, String realName, String passwd,
                           String confirmPasswd, long addTime, int addVul, Map<String, Object> rsaKey) throws Exception {
         RSAPrivateKey privateKey = (RSAPrivateKey) rsaKey.get("private");
         passwd = RSAUtil.decryptByPrivateKey(passwd, privateKey);
         confirmPasswd = RSAUtil.decryptByPrivateKey(confirmPasswd, privateKey);
 
-        int num = userDao.hasAlreadyExitsChecker(checkerName);
-        if (num > 0) {
-            return -1;
+//        int num = userDao.hasAlreadyExitsChecker(checkerName);
+        User user = getUserByUserName(checkerName);
+        if (user != null) {
+            if (user.getDelFlag() == 1) {
+                return -6;
+            } else {
+                return -1;
+            }
         }
+//        if (num > 0) {
+//            return -1;
+//        }
         if (!PasswordUtil.checkPasswd(passwd)) {
             return -2;
         }
@@ -173,14 +181,14 @@ public class UserService extends BaseService {
     public ArrayList<User> getPageCheckerList(int page, int perPageNum) {
         int begin = (page - 1) * perPageNum;
         int offset = perPageNum;
-        ArrayList<User> userArrayList =  userDao.getPageCheckerList(begin, offset);
+        ArrayList<User> userArrayList = userDao.getPageCheckerList(begin, offset);
 
-        for(User user : userArrayList){
-            if(user.getUserType().equals("admin")){
+        for (User user : userArrayList) {
+            if (user.getUserType().equals("admin")) {
                 user.setUserType("管理员");
-            }else if(user.getUserType().equals("audit")){
+            } else if (user.getUserType().equals("audit")) {
                 user.setUserType("审计员");
-            }else if(user.getUserType().equals("checker")) {
+            } else if (user.getUserType().equals("checker")) {
                 user.setUserType("普通用户");
             }
         }

@@ -35,7 +35,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <link href="<c:url value="/public/lib/sweet-alert/sweet-alert.css" />" rel="stylesheet" type="text/css">
 <link href="<c:url value="/public/lib/slider/bootstrap-slider.min.css" />" rel="stylesheet" type="text/css">
 
-<link href="<c:url value="/public/css/network-2c52ae34ae.css" />" rel="stylesheet" type="text/css">
+<link href="<c:url value="/public/css/network-77d6d8ea8f.css" />" rel="stylesheet" type="text/css">
 <link rel="shortcut icon" href="<c:url value="/public/img/favicon.ico" />" type="image/x-icon" />
 <script src="<c:url value="/public/lib/metronic/assets/global/plugins/jquery.min.js" />" type="text/javascript"></script>
 </head>
@@ -52,13 +52,13 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
 <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
 <!-- BEGIN HEADER -->
-<%@include file="/cp/public/head.jsp" %>
+<%@include file="/WEB-INF/cp/public/head.jsp" %>
 <!-- END HEADER -->
 <div class="clearfix"></div>
 <!-- BEGIN CONTAINER -->
 <div class="page-container">
 	<!-- BEGIN SIDEBAR -->
-	<%@include file="/cp/public/sidebar.jsp" %>
+	<%@include file="/WEB-INF/cp/public/sidebar.jsp" %>
 	<script>
 		$('.page-sidebar-menu li.network').addClass('active open');
 	</script>
@@ -67,99 +67,7 @@ License: You must have a valid license purchased only from themeforest(the above
 	<div class="page-content-wrapper">
 		<div class="page-content">
 			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
-			<div class="modal fade" id="configModel" tabindex="-1" data-backdrop="static" role="basic" aria-hidden="true">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-							<h4 class="modal-title">网络配置</h4>
-						</div>
-						<div class="modal-body">
-							 <!--表单开始-->
-							 <div class="form">
-								<form id="config" action="" class="form-horizontal" role="form" method="GET">
-									<div class="form-body">
-										<div class="form-group">
-											<label class="col-md-3 control-label">端口
-												<span class="required" aria-required="true">* </span>
-											</label>
-											<div class="col-md-9">
-												<input name="device" type="text" class="form-control" placeholder="device" readonly>
-											</div>
-										</div>
-										<div class="form-group">
-											<label class="col-md-3 control-label">方式
-												<span class="required" aria-required="true">* </span>
-											</label>
-											<div class="col-md-9">
-												<select name="style" class="form-control style">
-													<option value="static" slected>静态地址</option>
-													<option value="dhcp">DHCP</option>
-												</select>
-											</div>
-										</div>
-										<div class="form-group">
-											<label class="col-md-3 control-label">IP
-												<span class="required" aria-required="true">* </span>
-											</label>
-											<div class="col-md-9">
-												<input name="ip" type="text" class="no-dhcp form-control">
-											</div>
-										</div>
-										<div class="form-group">
-											<label class="col-md-3 control-label">子网掩码
-												<span class="required" aria-required="true">* </span>
-											</label>
-											<div class="col-md-9">
-												<input name="netmask" type="text" class="no-dhcp form-control">
-											</div>
-										</div>
-										<div class="form-group">
-											<label class="col-md-3 control-label">网关</label>
-											<div class="col-md-9">
-												<input name="gateway" type="text" class="no-dhcp form-control">
-											</div>
-										</div>
-										<div class="form-group">
-											<label class="col-md-3 control-label">首选DNS</label>
-											<div class="col-md-9">
-												<input name="dns1" type="text" class="no-dhcp form-control">
-											</div>
-										</div>
-										<div class="form-group">
-											<label class="col-md-3 control-label">备用DNS</label>
-											<div class="col-md-9">
-												<input name="dns2" type="text" class="no-dhcp form-control">
-											</div>
-										</div>
-										<div class="form-group">
-											<label class="col-md-3 control-label">带宽</label>
-											<div class="col-md-9">
-												<div class="bandwidth-wrapper">
-													<label>3M</label>
-													<input id="bandwidth" data-slider-id='bandwidthSlider' type="text" data-slider-min="3" data-slider-max="10" data-slider-step="0.1" data-slider-value="5" disabled/>
-													<label>10M</label>
-												</div>
-											</div>
-											<input name="bandwidth" type="hidden" value="5">
-										</div>
-										<div class="mask"></div>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="c-btn submit">修 改</button>
-										<button type="button" class="c-btn" data-dismiss="modal">取 消</button>
-									</div>
-								</form>
-								<div class="loading"><img src="../public/img/running.gif"></div>
-							</div>
-							 <!--表单结束-->
-						</div>
-						
-					</div>
-					<!-- /.modal-content -->
-				</div>
-				<!-- /.modal-dialog -->
-			</div>
+			
 			<!-- /.modal -->
 			<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 			<!-- BEGIN STYLE CUSTOMIZER -->
@@ -179,41 +87,87 @@ License: You must have a valid license purchased only from themeforest(the above
                     </div>
 					<!-- END PAGE TITLE & BREADCRUMB-->
 				</div>
+				<div class="col-xs-6">
+	                <form action="" id="netConfig" method="POST"
+	                class="form-horizontal center" enctype="multipart/form-data" role="form">
+		                <div class="text-left relative">
+	                    <div class="form-group">
+	                        <label class="col-xs-3 control-label">通信端口
+	                            <span class="required" aria-required="true">* </span>
+	                        </label>
+	                        <div class="col-xs-7">
+	                            <input name="ethName" type="text" class="form-control" readonly value="eth0">
+	                        </div>
+	                    </div>
+	                    <div class="form-group">
+	                        <label class="col-xs-3 control-label">方式
+	                            <span class="required" aria-required="true">* </span>
+	                        </label>
+	                        <div class="col-xs-7">
+	                            <select name="dhcpFlag" class="form-control dhcpFlag" disabled>
+	                                <option value="0" slected>静态地址</option>
+	                                <option value="1">DHCP</option>
+	                            </select>
+	                        </div>
+	                    </div>
+	                    <div class="form-group no-dhcp-wrapper">
+	                        <label class="col-xs-3 control-label">IP
+	                            <span class="required" aria-required="true">* </span>
+	                        </label>
+	                        <div class="col-xs-7">
+	                            <input name="ip" type="text" class="no-dhcp form-control" disabled>
+	                        </div>
+	                    </div>
+	                    <div class="form-group no-dhcp-wrapper">
+	                        <label class="col-xs-3 control-label">子网掩码
+	                            <span class="required" aria-required="true">* </span>
+	                        </label>
+	                        <div class="col-xs-7">
+	                            <input name="netmask" type="text" class="no-dhcp form-control" disabled>
+	                        </div>
+	                    </div>
+	                    <div class="form-group no-dhcp-wrapper">
+	                        <label class="col-xs-3 control-label">网关</label>
+	                        <div class="col-xs-7">
+	                            <input name="gateway" type="text" class="no-dhcp form-control" disabled>
+	                        </div>
+	                    </div>
+	                    <div class="form-group no-dhcp-wrapper">
+	                        <label class="col-xs-3 control-label">首选DNS</label>
+	                        <div class="col-xs-7">
+	                            <input name="dns1" type="text" class="no-dhcp form-control" disabled>
+	                        </div>
+	                    </div>
+	                    <div class="form-group no-dhcp-wrapper">
+	                        <label class="col-xs-3 control-label">备用DNS</label>
+	                        <div class="col-xs-7">
+	                            <input name="dns2" type="text" class="no-dhcp form-control" disabled>
+	                        </div>
+	                    </div>
+	                    <div class="form-group">
+							<label class="col-md-3 control-label">带宽</label>
+							<div class="col-md-9">
+								<div class="bandwidth-wrapper">
+									<label>3M</label>
+									<input id="bandwidth" data-slider-id='bandwidthSlider' type="text" data-slider-min="3" data-slider-max="10" data-slider-step="0.1" data-slider-value="5" disabled/>
+									<label>10M</label>
+								</div>
+							</div>
+							<input name="bandwidth" type="hidden" value="5">
+						</div>
+	                    <div class="mask"></div>
+		                </div>
+		                <div class="op-btns">
+	                    <button type="button" class="c-btn edit">编辑</button>
+	                    <button type="button" class="c-btn edit-ok">确定</button>
+	                    <button type="button" class="c-btn edit-cancel">取消</button>
+		                </div>
+		                    <!--<button type="button" class="u-btn submit">修 改</button>-->
+		                <div class="loading"><img src="../public/img/running.gif"></div>
+	                </form>
+	        	</div>
 			</div>
 			<!-- END PAGE HEADER-->
-			<div class="table-responsive net-config relative">
-				<table class="table table-bordered table-hover">
-					<thead>
-						<tr>
-							<th>端口</th>
-							<th>方式</th>
-							<th>地址</th>
-							<th>网关</th>
-							<th>子网掩码</th>
-							<th>DNS1</th>
-							<th>DNS2</th>
-							<th>带宽</th>
-							<th>操作</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td class="device"></td>
-							<td class="style"></td>
-							<td class="ip"></td>
-							<td class="gateway"></td>
-							<td class="netmask"></td>
-							<td class="dns1"></td>
-							<td class="dns2"></td>
-							<td class="bandwidth"></td>
-							<td class="operate">
-								<a href="#configModel" data-toggle="modal" class="config">修改</a>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<div class="loading"><img src="../public/img/running.gif"></div>
-			</div>
 		</div>
 	</div>
 	<!-- END CONTENT -->
@@ -238,12 +192,24 @@ License: You must have a valid license purchased only from themeforest(the above
 	</div>
 	<!-- /.modal-dialog -->
 </div>
-<%@include file="/cp/public/footer.jsp" %>
+<%@include file="/WEB-INF/cp/public/footer.jsp" %>
 
 <script>
 	$( '.page-sidebar-menu li.config' ).addClass( 'active open' );
 	$( '.page-sidebar-menu li.config' ).find( '.arrow' ).addClass( 'open' );
 	$( '.page-sidebar-menu li.config li.network' ).addClass( 'active' );
+
+	window.G = {
+        netConfig: {
+            ethName: '${netConfig.ethName}',
+            dhcpFlag: '${netConfig.dhcpFlag}',
+            ip: '${netConfig.ip}',
+            gateway: '${netConfig.gateway}',
+            netmask: '${netConfig.netmask}',
+            dns1: '${netConfig.dns1}',
+            bandwidth: ${netConfig.bandwidth}
+        }
+	};
 </script>
 <script src="<c:url value="/public/lib/metronic/assets/global/plugins/bootstrap/js/bootstrap.min.js" />" type="text/javascript"></script>
 <script src="<c:url value="/public/lib/metronic/assets/global/plugins/jquery-ui/jquery-ui.min.js" />" type="text/javascript"></script>
@@ -254,9 +220,9 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="<c:url value="/public/lib/slider/bootstrap-slider.js" />" type="text/javascript"></script>
 <script src="<c:url value="/public/lib/jquery.validate.min.js" />" type="text/javascript"></script>
 
-<script src="<c:url value="/public/js/validate-config-9f3feb2fe8.js" />" type="text/javascript"></script>
-<script src="<c:url value="/public/js/common-c9ce5fd9a3.js" />" type="text/javascript"></script>
-<script src="<c:url value="/public/js/network-579700d006.js" />" type="text/javascript"></script>
+<script src="<c:url value="/public/js/validate-config-c05a002e2e.js" />" type="text/javascript"></script>
+<script src="<c:url value="/public/js/common-5047d336cd.js" />" type="text/javascript"></script>
+<script src="<c:url value="/public/js/network-f0579ae49d.js" />" type="text/javascript"></script>
 </body>
 <!-- END BODY -->
 </html>

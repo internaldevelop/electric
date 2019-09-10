@@ -7,8 +7,8 @@
 	<!-- BEGIN HEADER INNER -->
 	<div class="page-header-inner">
 		<!-- BEGIN LOGO -->
-		
-		<p class="system-title">视频监控系统深度安全检查</p>
+
+		<p class="system-title">终端系统漏洞扫描工具 </p>
 
 		<!-- END LOGO -->
 		<!-- BEGIN RESPONSIVE MENU TOGGLER -->
@@ -27,7 +27,7 @@
 						<i class="fa fa-sign-out"></i><span class="username">退出</span>
 					</a>
 				</li>
-				
+
 				<!-- END USER LOGIN DROPDOWN -->
 				<!-- END USER LOGIN DROPDOWN -->
 			</ul>

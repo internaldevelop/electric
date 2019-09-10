@@ -39,7 +39,7 @@ public class TaskResultService extends BaseService {
     public void saveTaskResult(int taskid, int projectid, String process, JSONObject ipJson) {
         try {
             String ip = ipJson.getString("ip");
-            String ipInfo = addField(process, ipJson);//添加web后台所需的私有字段
+            String ipInfo = addField(ip, process, ipJson);//添加web后台所需的私有字段
             taskResultDao.saveTaskResult(taskid, projectid, ip, ipInfo);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -47,7 +47,7 @@ public class TaskResultService extends BaseService {
     }
 
     //在ipJson中添加漏洞是否修复字段fixed(初始值为-1)以及漏洞的信息字段
-    private String addField(String process, JSONObject ipInfoJson) throws JSONException {
+    private String addField(String ip, String process, JSONObject ipInfoJson) throws JSONException {
         if (process.equals("VS")) { // 漏洞验证结果中添加漏洞信息
             //修复没有使用mac品牌bug
             JSONObject deviceSumObj = ipInfoJson.getJSONObject("device_info_summary");
@@ -63,6 +63,7 @@ public class TaskResultService extends BaseService {
                     }
                 }
             }
+            JSONArray deviceInfoList = deviceSumObj.getJSONArray("device_info_list");
 
             //修复识别不了工控协议的bug
             JSONArray portList = ipInfoJson.getJSONArray("port_list");
@@ -81,6 +82,10 @@ public class TaskResultService extends BaseService {
                         type = "IEC104";
                     } else if (port == 20000) {
                         type = "DNP3";
+                    } else if (port == 5562 || port == 5556) {
+                        if (deviceInfoList != null && deviceInfoList.length() > 0) {
+                            deviceInfoList.getJSONObject(0).put("brand", "Mitsubishi");
+                        }
                     }
                     if (!type.equals("")) {
                         jsonObject.getJSONObject("service").put("type", type);
@@ -95,6 +100,14 @@ public class TaskResultService extends BaseService {
             if (ipInfoJson.get("port_list") != null) {
                 JSONArray portInfoArray = ipInfoJson.getJSONArray("port_list");
                 for (int i = 0; i < portInfoArray.length(); i++) {
+                    JSONObject portInfo = portInfoArray.getJSONObject(i);
+                    if (portInfo.getInt("port") == 44818) {
+                        VulInfo vulInfo = new VulInfo();
+                        vulInfo.setChecked(0);
+                        vulInfo.setId("CVE-2017-12088");
+                        String strVulInfo = JsonUtil.objectToJson(vulInfo).toString();
+                        portInfo.getJSONArray("vul_list").put(new JSONObject(strVulInfo));
+                    }
                     JSONArray portVulArray = portInfoArray.getJSONObject(i).getJSONArray("vul_list");
                     addVulInfo(portVulArray);
                 }
@@ -425,8 +438,15 @@ public class TaskResultService extends BaseService {
                     temp = "暂无";
                 }
                 solution = temp;
+            } else {
+                solution = "暂无";
             }
             vulDetail.setSolution(solution);
+            if (vulInfo.getId().equals("CVE-2017-12088")) {
+                vulDetail.setFlag("1");
+            } else {
+                vulDetail.setFlag("0");
+            }
             vulDetailList.add(vulDetail);
         }
     }
@@ -624,8 +644,14 @@ public class TaskResultService extends BaseService {
             for (int i = 0; i < portInfoList.size(); i++) {
                 String serviceType = "", servicePort = "";
                 PortInfo portInfo = portInfoList.get(i);
-                if (portInfo.getVulList() != null) {
-                    getDeviceVulDetail(portInfo.getVulList(), vulList, serviceType, servicePort);
+                if (portInfo != null) {
+                    if (portInfo.getService() != null) {
+                        serviceType = portInfo.getService().getType();
+                        servicePort = portInfo.getPort() + "";
+                    }
+                    if (portInfo.getVulList() != null) {
+                        getDeviceVulDetail(portInfo.getVulList(), vulList, serviceType, servicePort);
+                    }
                 }
             }
         }
@@ -643,5 +669,30 @@ public class TaskResultService extends BaseService {
         }
         return vulList;
     }
+
+
+    public void updateVulCheckedState(int projectID, int taskID, String ip, String vulId) {
+        String strIpInfo = taskResultDao.getIpInfo(projectID, taskID, ip);
+        IpInfo ipInfo = (IpInfo) JsonUtil.JsonToObj(strIpInfo, IpInfo.class);
+        if (ipInfo != null) {
+            List<PortInfo> portInfoList = ipInfo.getPortList();
+            if (portInfoList != null) {
+                for (PortInfo portInfo : portInfoList) {
+                    List<VulInfo> vulInfoList = portInfo.getVulList();
+                    if (vulInfoList != null) {
+                        for (VulInfo vulInfo : vulInfoList) {
+                            if (vulInfo.getId().equals(vulId)) {
+                                vulInfo.setVerifyState("已验证");
+                                vulInfo.setChecked(1);
+                            }
+                        }
+                    }
+                }
+            }
+            strIpInfo = JsonUtil.objectToJson(ipInfo).toString();
+            taskResultDao.updateTaskResult(taskID, projectID, ip, strIpInfo);
+        }
+    }
+
 
 }

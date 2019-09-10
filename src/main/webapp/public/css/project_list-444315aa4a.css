@@ -768,3 +768,25 @@ form .exist {
 .system-title{
     font-size:24px;
 }
+
+.table {
+        table-layout: fixed;
+}
+.table th:first-child{
+    width: 5%;
+}
+.table th:nth-child(2){
+    width: 15%;
+}
+.table th:nth-child(3){
+    width: 15%;
+}
+.table th:nth-child(4){
+    width: 10%;
+}
+.table th:nth-child(8){
+    width: 200px;
+}
+.table td{
+        word-break: break-all;
+}

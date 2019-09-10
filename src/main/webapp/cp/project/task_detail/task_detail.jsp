@@ -99,13 +99,13 @@ License: You must have a valid license purchased only from themeforest(the above
 <body
 	class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
 	<!-- BEGIN HEADER -->
-	<%@include file="/cp/public/head.jsp"%>
+	<%@include file="/WEB-INF/cp/public/head.jsp"%>
 	<!-- END HEADER -->
 	<div class="clearfix"></div>
 	<!-- BEGIN CONTAINER -->
 	<div class="page-container">
 		<!-- BEGIN SIDEBAR -->
-		<%@include file="/cp/public/sidebar.jsp"%>
+		<%@include file="/WEB-INF/cp/public/sidebar.jsp"%>
 		<script>
 			$('.page-sidebar-menu li.project_list').addClass('active open');
 		</script>
@@ -267,7 +267,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		</div>
 		<!-- /.modal-dialog -->
 	</div>
-	<%@include file="/cp/public/footer.jsp"%>
+	<%@include file="/WEB-INF/cp/public/footer.jsp"%>
 	<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 	<!--[if lt IE 9]>
 <script src="<c:url value="/public/lib/metronic/assets/global/plugins/respond.min.js" />" type="text/javascript"></script>
@@ -334,13 +334,13 @@ License: You must have a valid license purchased only from themeforest(the above
 		type="text/javascript"></script>
 	<script src="<c:url value="/public/lib/jquery.validate.min.js" />"
 		type="text/javascript"></script>
-	<script src="<c:url value="/public/js/common-c9ce5fd9a3.js" />"
+	<script src="<c:url value="/public/js/common-5047d336cd.js" />"
 		type="text/javascript"></script>
-	<script src="<c:url value="/public/js/validate-config-9f3feb2fe8.js" />"
+	<script src="<c:url value="/public/js/validate-config-c05a002e2e.js" />"
 		type="text/javascript"></script>
-	<script src="<c:url value="/public/js/subscribe-6dce02cc75.js" />"
+	<script src="<c:url value="/public/js/subscribe-2fc74f0121.js" />"
 		type="text/javascript"></script>
-	<script src="<c:url value="/public/js/task_detail-c04da00422.js" />"
+	<script src="<c:url value="/public/js/task_detail-c517e87658.js" />"
 		type="text/javascript"></script>
 </body>
 <!-- END BODY -->

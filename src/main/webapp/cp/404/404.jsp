@@ -87,13 +87,13 @@ License: You must have a valid license purchased only from themeforest(the above
 <body
 	class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
 	<!-- BEGIN HEADER -->
-	<%@include file="/cp/public/head.jsp"%>
+	<%@include file="/WEB-INF/cp/public/head.jsp"%>
 	<!-- END HEADER -->
 	<div class="clearfix"></div>
 	<!-- BEGIN CONTAINER -->
 	<div class="page-container">
 		<!-- BEGIN SIDEBAR -->
-		<%@include file="/cp/public/sidebar.jsp"%>
+		<%@include file="/WEB-INF/cp/public/sidebar.jsp"%>
 		<!-- END SIDEBAR -->
 		<!-- BEGIN CONTENT -->
 		<div class="page-content-wrapper">
@@ -129,7 +129,7 @@ License: You must have a valid license purchased only from themeforest(the above
 			<!-- END CONTENT -->
 		</div>
 		<!-- END CONTAINER -->
-		<%@include file="/cp/public/footer.jsp"%>
+		<%@include file="/WEB-INF/cp/public/footer.jsp"%>
 		<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 		<!--[if lt IE 9]>
 <script src="<c:url value="/public/lib/metronic/assets/global/plugins/respond.min.js" />" type="text/javascript"></script>

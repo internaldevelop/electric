@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-		 pageEncoding="UTF-8"%>
+     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <!--
@@ -20,59 +20,59 @@ License: You must have a valid license purchased only from themeforest(the above
 <!--<![endif]-->
 <!-- BEGIN HEAD -->
 <head>
-	<meta charset="utf-8" />
-	<title>${actionName }</title>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta content="width=device-width, initial-scale=1" name="viewport" />
-	<meta content="" name="description" />
-	<meta content="" name="author" />
-	<!-- BEGIN GLOBAL MANDATORY STYLES -->
-	<link
-			href="<c:url value="/public/lib/metronic/assets/global/plugins/font-awesome/css/font-awesome.min.css" />"
-			rel="stylesheet" type="text/css" />
-	<link
-			href="<c:url value="/public/lib/metronic/assets/global/plugins/font-awesome/css/font-awesome.min.css" />"
-			rel="stylesheet" type="text/css" />
-	<link
-			href="<c:url value="/public/lib/metronic/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" />"
-			rel="stylesheet" type="text/css" />
-	<link
-			href="<c:url value="/public/lib/metronic/assets/global/plugins/bootstrap/css/bootstrap.min.css" />"
-			rel="stylesheet" type="text/css" />
-	<link
-			href="<c:url value="/public/lib/metronic/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" />"
-			rel="stylesheet" type="text/css" />
-	<!-- END GLOBAL MANDATORY STYLES -->
-	<!-- BEGIN PAGE LEVEL PLUGINS -->
-	<!-- END PAGE LEVEL PLUGINS -->
-	<!-- BEGIN THEME GLOBAL STYLES -->
-	<link
-			href="<c:url value="/public/lib/metronic/assets/global/css/components.min.css" />"
-			rel="stylesheet" type="text/css" />
-	<link
-			href="<c:url value="/public/lib/metronic/assets/global/css/plugins.min.css" />"
-			rel="stylesheet" type="text/css" />
-	<!-- END THEME GLOBAL STYLES -->
-	<!-- BEGIN THEME LAYOUT STYLES -->
-	<link
-			href="<c:url value="/public/lib/metronic/assets/layouts/layout/css/layout.min.css" />"
-			rel="stylesheet" type="text/css" />
-	<link
-			href="<c:url value="/public/lib/metronic/assets/layouts/layout/css/themes/darkblue.min.css" />"
-			rel="stylesheet" type="text/css" id="style_color" />
-	<link
-			href="<c:url value="/public/lib/metronic/assets/layouts/layout/css/custom.min.css" />"
-			rel="stylesheet" type="text/css" />
+  <meta charset="utf-8" />
+  <title>${actionName }</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <meta content="" name="description" />
+  <meta content="" name="author" />
+  <!-- BEGIN GLOBAL MANDATORY STYLES -->
+  <link
+      href="<c:url value="/public/lib/metronic/assets/global/plugins/font-awesome/css/font-awesome.min.css" />"
+      rel="stylesheet" type="text/css" />
+  <link
+      href="<c:url value="/public/lib/metronic/assets/global/plugins/font-awesome/css/font-awesome.min.css" />"
+      rel="stylesheet" type="text/css" />
+  <link
+      href="<c:url value="/public/lib/metronic/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" />"
+      rel="stylesheet" type="text/css" />
+  <link
+      href="<c:url value="/public/lib/metronic/assets/global/plugins/bootstrap/css/bootstrap.min.css" />"
+      rel="stylesheet" type="text/css" />
+  <link
+      href="<c:url value="/public/lib/metronic/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" />"
+      rel="stylesheet" type="text/css" />
+  <!-- END GLOBAL MANDATORY STYLES -->
+  <!-- BEGIN PAGE LEVEL PLUGINS -->
+  <!-- END PAGE LEVEL PLUGINS -->
+  <!-- BEGIN THEME GLOBAL STYLES -->
+  <link
+      href="<c:url value="/public/lib/metronic/assets/global/css/components.min.css" />"
+      rel="stylesheet" type="text/css" />
+  <link
+      href="<c:url value="/public/lib/metronic/assets/global/css/plugins.min.css" />"
+      rel="stylesheet" type="text/css" />
+  <!-- END THEME GLOBAL STYLES -->
+  <!-- BEGIN THEME LAYOUT STYLES -->
+  <link
+      href="<c:url value="/public/lib/metronic/assets/layouts/layout/css/layout.min.css" />"
+      rel="stylesheet" type="text/css" />
+  <link
+      href="<c:url value="/public/lib/metronic/assets/layouts/layout/css/themes/darkblue.min.css" />"
+      rel="stylesheet" type="text/css" id="style_color" />
+  <link
+      href="<c:url value="/public/lib/metronic/assets/layouts/layout/css/custom.min.css" />"
+      rel="stylesheet" type="text/css" />
 
-	<link rel="stylesheet" href="<c:url value="/public/css/create-dc1a43f515.css" />"
-		  type="text/css">
-	<link rel="shortcut icon"
-		  href="<c:url value="/public/img/favicon.ico" />" type="image/x-icon" />
-	<script
-			src="<c:url value="/public/lib/metronic/assets/global/plugins/jquery.min.js" />"
-			type="text/javascript"></script>
+  <link rel="stylesheet" href="<c:url value="/public/css/create-dc1a43f515.css" />"
+      type="text/css">
+  <link rel="shortcut icon"
+      href="<c:url value="/public/img/favicon.ico" />" type="image/x-icon" />
+  <script
+      src="<c:url value="/public/lib/metronic/assets/global/plugins/jquery.min.js" />"
+      type="text/javascript"></script>
 
-	<script type="text/javascript">
+  <script type="text/javascript">
 
         var DateFormatter = {
             Patterns:{
@@ -124,10 +124,16 @@ License: You must have a valid license purchased only from themeforest(the above
             var pat=new RegExp("[^a-zA-Z0-9\_\-]","i");
             var vul_id=$("#vul_id").val();
             var vul_name=$("#vul_name").val();
+            var vul_type=$("#vul_type").val();
             var vul_time=$("#vul_time").val();
 //            var ret = DateFormatter.DateISO(vul_time, 'yyyy-MM-dd HH:mm:ss')
             var ret = CheckDateTime(vul_time);
             var description=$("#description").val();
+            var type=$("#first_type").val();
+            var brand=$("#affect_brand").val();
+            var affect_product = $("#affect_product").val();
+            var risklevel = $("#risklevel").val();
+            var dangers = $("#dangers").val();
             if(vul_id==null || vul_id=="" || pat.test(vul_id)==true){
                 $("#error").html("漏洞编号不符合要求！");
                 return false;
@@ -136,18 +142,72 @@ License: You must have a valid license purchased only from themeforest(the above
                 $("#error").html("漏洞名称不能为空！");
                 return false;
             }
+             if(vul_name.length > 50){
+                $("#error").html("漏洞名称不得超过50个字符");
+                return false;
+            }
+            if (vul_type==null || vul_type=="") {
+                $("#error").html("漏洞类型不能为空！");
+                return false;
+            }
+             if (vul_type > 20) {
+                $("#error").html("漏洞类型不得超过20个字符");
+                return false;
+            }
             if(vul_time==null || vul_time==""){
                 $("#error").html("漏洞时间不能为空！");
                 return false;
             }
-            if(!ret){
-                $("#error").html("请检查输入时间！");
+            // if(!ret){
+            //     $("#error").html("请检查输入时间！");
+            //     return false;
+            // }
+            if (affect_product == null || affect_product == "") {
+                $("#error").html("设备型号不能为空！");
+                return false;
+            }
+            if (affect_product.length > 20) {
+                $("#error").html("设备型号不得超过20个字符");
+                return false;
+            }
+             if(type==null || type==""){
+                $("#error").html("设备类型不能为空！");
+                return false;
+            }
+              if(type.length > 20){
+                $("#error").html("设备类型不得超过20个字符！");
+                return false;
+            }
+            if(brand==null || brand==""){
+                $("#error").html("设备品牌不能为空");
+                return false;
+            }
+            if(brand.length > 20){
+                $("#error").html("设备品牌不能超过20个字符");
+                return false;
+            }
+            if (risklevel == null || risklevel=="") {
+              $("#error").html("危险等级不能为空");
+                return false;
+            }
+            if (dangers == null || dangers=="") {
+              $("#error").html("漏洞危害不能为空");
+                return false;
+            }
+            if (dangers.length > 50) {
+              $("#error").html("漏洞危害不能超过50个字符");
                 return false;
             }
             if(description==null || description==""){
                 $("#error").html("漏洞详情不能为空！");
                 return false;
             }
+            if(description.length > 50){
+                $("#error").html("漏洞详情不能超过50个字符！");
+                return false;
+            }
+
+           
             return true;
         }
 
@@ -156,7 +216,9 @@ License: You must have a valid license purchased only from themeforest(the above
             $("#vul_name").val("");
             $("#vul_type").val("");
             $("#vul_time").val("");
+            $("#first_type").val("");
             $("#affect_product").val("");
+            $("#affect_brand").val("");
             $("#risklevel").val("");
             $("#dangers").val("");
             $("#description").val("");
@@ -189,15 +251,17 @@ License: You must have a valid license purchased only from themeforest(the above
                         contentType:false,
                         success:function(result){
                             var result=eval('('+result+')');
-                            alert(result.vul_message+"\n"+result.poc_message);
+                            var a = result.poc_message? result.poc_message : "";
+                            alert(result.vul_message+" "+a);
                             window.location.href="${pageContext.request.contextPath}/vulner_manage/vulner/list";
+                          
                         }
                     });
                 }
             }
         }
 
-	</script>
+  </script>
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -217,20 +281,20 @@ License: You must have a valid license purchased only from themeforest(the above
 <div class="clearfix"></div>
 <!-- BEGIN CONTAINER -->
 <div class="page-container">
-	<!-- BEGIN SIDEBAR -->
-	<%@include file="/WEB-INF/cp/public/sidebar.jsp"%>
-	<script>
+  <!-- BEGIN SIDEBAR -->
+  <%@include file="/WEB-INF/cp/public/sidebar.jsp"%>
+  <script>
         $('.page-sidebar-menu li.vulner').addClass('active open');
-		/*$('.page-sidebar-menu li.project').find('.arrow').addClass('open');
-		 $('.page-sidebar-menu li.project li.create_project').addClass(
-		 'active');*/
-	</script>
-	<!-- END SIDEBAR -->
-	<!-- BEGIN CONTENT -->
-	<div class="page-content-wrapper">
-		<div class="page-content row">
-			<!-- BEGIN PAGE HEADER-->
-			<div class="col-md-10">
+    /*$('.page-sidebar-menu li.project').find('.arrow').addClass('open');
+     $('.page-sidebar-menu li.project li.create_project').addClass(
+     'active');*/
+  </script>
+  <!-- END SIDEBAR -->
+  <!-- BEGIN CONTENT -->
+  <div class="page-content-wrapper">
+    <div class="page-content row">
+      <!-- BEGIN PAGE HEADER-->
+      <div class="col-md-10">
                 <div class="row">
                     <div class="col-md-12">
                         <!-- BEGIN PAGE TITLE & BREADCRUMB-->
@@ -253,21 +317,21 @@ License: You must have a valid license purchased only from themeforest(the above
                     <div class="panel-body">
                         <form class="form-horizontal" id="vulner">
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">漏洞编号：</label>
+                                <label class="col-sm-2 control-label"><span style="color: red;margin-right: 3px;">*</span>漏洞编号：</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" maxlength="100" id="vul_id" name="vul_id" value="${vulner.vul_id }"
                                            style="width: 300px" required="required" placeholder="编号格式：xxx-yyyy-xxx...">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">漏洞名称：</label>
+                                <label class="col-sm-2 control-label"><span style="color: red;margin-right: 3px;">*</span>漏洞名称：</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" maxlength="100" id="vul_name" name="vul_name" value="${vulner.vul_name }"
-                                           style="width: 300px" placeholder="多个品牌以,号分隔">
+                                           style="width: 300px" placeholder="请输入漏洞名称">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">漏洞类型：</label>
+                                <label class="col-sm-2 control-label"><span style="color: red;margin-right: 3px;">*</span>漏洞类型：</label>
                                 <div class="col-sm-10">
                                     <select class="form-control" style="width: 300px" id="vul_type" name="vul_type">
                                         <option value="">请选择...</option>
@@ -290,21 +354,35 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">漏洞时间：</label>
+                                <label class="col-sm-2 control-label"><span style="color: red;margin-right: 3px;">*</span>漏洞时间：</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" maxlength="100" id="vul_time" name="vul_time" value="${vulner.vul_time }"
                                            style="width: 300px" required="required" placeholder="合法时间格式：yyyy-MM-dd HH:mm:ss">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">影响产品：</label>
+                                <label class="col-sm-2 control-label"><span style="color: red;margin-right: 3px;">*</span>设备型号：</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" maxlength="200" id="affect_product" name="affect_product" value="${vulner.affect_product }"
-                                           style="width: 300px" placeholder="多个产品或设备以,号分隔">
+                                           style="width: 300px" placeholder="多种型号以,号分隔">
+                                </div>
+                            </div>
+                             <div class="form-group">
+                                <label class="col-sm-2 control-label"><span style="color: red;margin-right: 3px;">*</span>设备类型：</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" maxlength="200" id="first_type" name="first_type" value="${vulner.first_type }"
+                                           style="width: 300px" placeholder="多种类型以,号分隔">
+                                </div>
+                            </div>
+                             <div class="form-group">
+                                <label class="col-sm-2 control-label"><span style="color: red;margin-right: 3px;">*</span>设备品牌：</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" maxlength="200" id="affect_brand" name="affect_brand" value="${vulner.affect_brand }"
+                                           style="width: 300px" placeholder="多种品牌以,号分隔">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">危险等级：</label>
+                                <label class="col-sm-2 control-label"><span style="color: red;margin-right: 3px;">*</span>危险等级：</label>
                                 <div class="col-sm-10">
                                     <select class="form-control" style="width: 300px" id="risklevel" name="risklevel">
                                         <option value="">请选择...</option>
@@ -316,14 +394,14 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">漏洞危害：</label>
+                                <label class="col-sm-2 control-label"><span style="color: red;margin-right: 3px;">*</span>漏洞危害：</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" maxlength="500" id="dangers" name="dangers" value="${vulner.dangers }"
                                            style="width: 300px" placeholder="描述该漏洞可能造成的后果...">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">漏洞详情：</label>
+                                <label class="col-sm-2 control-label"><span style="color: red;margin-right: 3px;">*</span>漏洞详情：</label>
                                 <div class="col-sm-10">
                                     <textarea class="form-control" rows="4" maxlength="1000" id="description" name="description" required="required">${vulner.description }</textarea>
                                 </div>
@@ -387,8 +465,8 @@ License: You must have a valid license purchased only from themeforest(the above
                     <a href="${pageContext.request.contextPath}/vulner_manage/backup/list" class="list-group-item">备份恢复</a>
                 </div>
             </div>
-		</div>
-	</div>
+    </div>
+  </div>
 </div>
 <%@include file="/WEB-INF/cp/public/footer.jsp"%>
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
@@ -399,64 +477,64 @@ License: You must have a valid license purchased only from themeforest(the above
 <![endif]-->
 
 <script
-		src="<c:url value="/public/lib/metronic/assets/global/plugins/bootstrap/js/bootstrap.min.js" />"
-		type="text/javascript"></script>
+    src="<c:url value="/public/lib/metronic/assets/global/plugins/bootstrap/js/bootstrap.min.js" />"
+    type="text/javascript"></script>
 <script
-		src="<c:url value="/public/lib/metronic/assets/global/plugins/js.cookie.min.js" />"
-		type="text/javascript"></script>
+    src="<c:url value="/public/lib/metronic/assets/global/plugins/js.cookie.min.js" />"
+    type="text/javascript"></script>
 <script
-		src="<c:url value="/public/lib/metronic/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" />"
-		type="text/javascript"></script>
+    src="<c:url value="/public/lib/metronic/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" />"
+    type="text/javascript"></script>
 <script
-		src="<c:url value="/public/lib/metronic/assets/global/plugins/jquery.blockui.min.js" />"
-		type="text/javascript"></script>
+    src="<c:url value="/public/lib/metronic/assets/global/plugins/jquery.blockui.min.js" />"
+    type="text/javascript"></script>
 <script
-		src="<c:url value="/public/lib/metronic/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" />"
-		type="text/javascript"></script>
+    src="<c:url value="/public/lib/metronic/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" />"
+    type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
 <!-- BEGIN PAGE LEVEL PLUGINS -->
 <script
-		src="<c:url value="/public/lib/metronic/assets/global/plugins/jquery-ui/jquery-ui.min.js" />"
-		type="text/javascript"></script>
+    src="<c:url value="/public/lib/metronic/assets/global/plugins/jquery-ui/jquery-ui.min.js" />"
+    type="text/javascript"></script>
 <!-- END PAGE LEVEL PLUGINS -->
 <!-- BEGIN THEME GLOBAL SCRIPTS -->
 <script
-		src="<c:url value="/public/lib/metronic/assets/global/scripts/app.min.js" />"
-		type="text/javascript"></script>
+    src="<c:url value="/public/lib/metronic/assets/global/scripts/app.min.js" />"
+    type="text/javascript"></script>
 <!-- END THEME GLOBAL SCRIPTS -->
 <!-- BEGIN PAGE LEVEL SCRIPTS -->
 <script
-		src="<c:url value="/public/lib/metronic/assets/pages/scripts/ui-modals.min.js" />"
-		type="text/javascript"></script>
+    src="<c:url value="/public/lib/metronic/assets/pages/scripts/ui-modals.min.js" />"
+    type="text/javascript"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
 <!-- BEGIN THEME LAYOUT SCRIPTS -->
 <script
-		src="<c:url value="/public/lib/metronic/assets/layouts/layout/scripts/layout.min.js" />"
-		type="text/javascript"></script>
+    src="<c:url value="/public/lib/metronic/assets/layouts/layout/scripts/layout.min.js" />"
+    type="text/javascript"></script>
 <script
-		src="<c:url value="/public/lib/metronic/assets/layouts/layout/scripts/demo.min.js" />"
-		type="text/javascript"></script>
+    src="<c:url value="/public/lib/metronic/assets/layouts/layout/scripts/demo.min.js" />"
+    type="text/javascript"></script>
 <script
-		src="<c:url value="/public/lib/metronic/assets/layouts/global/scripts/quick-sidebar.min.js" />"
-		type="text/javascript"></script>
+    src="<c:url value="/public/lib/metronic/assets/layouts/global/scripts/quick-sidebar.min.js" />"
+    type="text/javascript"></script>
 
 <script src="<c:url value="/public/lib/bootstrap-paginator.js" />"
-		type="text/javascript"></script>
+    type="text/javascript"></script>
 <script src="<c:url value="/public/lib/echarts.min.js" />"
-		type="text/javascript"></script>
+    type="text/javascript"></script>
 
 <script src="<c:url value="/public/lib/bootstrap-paginator.js" />"
-		type="text/javascript"></script>
+    type="text/javascript"></script>
 <script src="<c:url value="/public/lib/echarts.min.js" />"
-		type="text/javascript"></script>
+    type="text/javascript"></script>
 <script src="<c:url value="/public/lib/masonry.pkgd.min.js" />"
-		type="text/javascript"></script>
+    type="text/javascript"></script>
 <script
-		src="<c:url value="/public/lib/sweet-alert/sweet-alert.min.js" />"
-		type="text/javascript"></script>
+    src="<c:url value="/public/lib/sweet-alert/sweet-alert.min.js" />"
+    type="text/javascript"></script>
 
 <script src="<c:url value="/public/lib/jquery.validate.min.js" />"
-		type="text/javascript"></script>
+    type="text/javascript"></script>
 
 <script>
     (function(){

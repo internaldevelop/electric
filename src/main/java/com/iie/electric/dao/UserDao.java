@@ -40,7 +40,8 @@ public interface UserDao {
             @Result(property = "emailName", column = "email_name", javaType = String.class, jdbcType = JdbcType.VARCHAR),
             @Result(property = "emailPasswd", column = "email_passwd", javaType = String.class, jdbcType = JdbcType.VARCHAR),
             @Result(property = "emailSubject", column = "email_subject", javaType = String.class, jdbcType = JdbcType.VARCHAR),
-            @Result(property = "emailContent", column = "email_content", javaType = String.class, jdbcType = JdbcType.VARCHAR)})
+            @Result(property = "emailContent", column = "email_content", javaType = String.class, jdbcType = JdbcType.VARCHAR),
+            @Result(property = "delFlag", column = "del_flag", javaType = Integer.class, jdbcType = JdbcType.INTEGER)})
     @Select("select * from user_info where user_name=#{userName}")
     User getUserByUserName(@Param("userName") String userName);
 
@@ -53,7 +54,7 @@ public interface UserDao {
     void changeUserInfo(@Param("userName") String userName, @Param("realName") String realName, @Param("newPasswd") String newPasswd);
 
     //获取所有检查员的数目
-    @Select("select count(*) from user_info where user_type='checker' and del_flag = 0")
+    @Select("select count(*) from user_info where del_flag = 0")
     int countChecker();
 
     //删除检查员
@@ -91,7 +92,7 @@ public interface UserDao {
             @Result(property = "realName", column = "real_name", javaType = String.class, jdbcType = JdbcType.VARCHAR),
             @Result(property = "addTime", column = "add_time", javaType = Long.class, jdbcType = JdbcType.BIGINT),
             @Result(property = "enableManageVulLib", column = "is_add_vul", javaType = Integer.class, jdbcType = JdbcType.INTEGER)})
-    @Select("select user_id,user_type,user_name,real_name,add_time,is_add_vul from user_info where user_type !='admin' and del_flag = 0 limit #{offset} offset #{begin}")
+    @Select("select user_id,user_type,user_name,real_name,add_time,is_add_vul from user_info where del_flag = 0 limit #{offset} offset #{begin}")
     ArrayList<User> getPageCheckerList(@Param("begin") int begin, @Param("offset") int offset);
 
     //修改检查员信息

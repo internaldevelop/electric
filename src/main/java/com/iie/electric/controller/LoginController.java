@@ -52,7 +52,8 @@ public class LoginController extends BaseController {
             }
             bizNo = loginState;
         }
-        String mask = MD5Util.getRandomString(5);
+//        String mask = MD5Util.getRandomString(5);
+        String mask = "123456";
         user.setMd5RandomKey(mask);
         modelMap.addAttribute("bizNo", bizNo);
         modelMap.addAttribute("bizMsg", bizMsg);

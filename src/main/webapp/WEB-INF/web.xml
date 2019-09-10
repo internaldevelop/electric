@@ -92,17 +92,18 @@
         <filter-name>HiddenHttpMethodFilter</filter-name>
         <servlet-name>electric</servlet-name>
     </filter-mapping>
+    <!--session永不过期-->
     <session-config>
-        <session-timeout>60</session-timeout>
+        <session-timeout>0</session-timeout>
     </session-config>
 
     <error-page>
         <error-code>404</error-code>
-        <location>/cp/404/404.jsp</location>
+        <location>/WEB-INF/cp/404/404.jsp</location>
     </error-page>
     <error-page>
         <error-code>500</error-code>
-        <location>/cp/500/500.jsp</location>
+        <location>/WEB-INF/cp/500/500.jsp</location>
     </error-page>
 
     <security-constraint>

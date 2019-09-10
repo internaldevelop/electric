@@ -2,7 +2,7 @@
   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<!-- 
+<!--
 Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.1.1
 Version: 3.0.1
 Author: KeenThemes
@@ -50,7 +50,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <body class="login">
 	<div class="page-lock">
         <div class="page-body">
-            <div class="lock-head logo"> 电力终端漏洞扫描利用 </div>
+            <div class="lock-head logo"> 终端系统漏洞扫描工具 </div>
             <div class="lock-body">
 				<c:if test="${bizMsg ne ''}">
             		<div class="alert alert-danger">
@@ -59,17 +59,18 @@ License: You must have a valid license purchased only from themeforest(the above
             		</div>
 				</c:if>
                 <form class="lock-form pull-left" action="login_check" method="POST">
-                	<div class="form-group" style="display:none;">
+                	<div class="form-group">
                 		<select name="usertype">
+					<option value="checker">普通用户</option>
                 			<option value="admin">管理员</option>
-                			<!--<option value="checker">检查员</option>-->
+                			<option value="audit">审计员</option>
                 		</select>
                 	</div>
                     <div class="form-group">
-                        <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="" name="username" value="admin" />
+                        <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="用户名" name="username" value="" />
                     </div>
                     <div class="form-group">
-                        <input class="form-control placeholder-no-fix" type="password" value="" autocomplete="new-password" placeholder="密码" autofocus name="password" />
+                        <input class="form-control placeholder-no-fix" type="password" value="" autocomplete="off" placeholder="密码" autofocus name="password" />
                     </div>
                     <div class="form-actions">
                         <button type="submit" class="btn uppercase">登&nbsp;&nbsp;录</button>
@@ -79,7 +80,7 @@ License: You must have a valid license purchased only from themeforest(the above
             <div class="lock-bottom">
             </div>
         </div>
-        <div class="page-footer-custom"> ©2016 中国科学院信息工程研究所 版权所有 </div>
+        <div class="page-footer-custom"> ©2019 中国电力科学研究院 版权所有 </div>
     </div>
 	<script src="<c:url value="/public/lib/metronic/assets/global/plugins/jquery.min.js" />" type="text/javascript"></script>
 	<script src="<c:url value="/public/lib/jquery.validate.min.js" />" type="text/javascript"></script>
@@ -88,13 +89,13 @@ License: You must have a valid license purchased only from themeforest(the above
 	    var mask = '${mask}';
 
 	    $( 'form' ).submit( function( e ) {
-	      var pw = $( 'input[name="password"]' );
+        var pw = $( 'input[name="password"]' );
+        var user = $('input[name="username"]');
 
-	      if( pw.val().trim() !== '' ) {
-	        pw.val( hex_md5( pw.val().trim() + mask ) );
-
-	        return true;
-	      }
+        if( pw.val().trim() !== '' ) {
+          pw.val( hex_md5( hex_md5(user.val().trim()+pw.val().trim()) + mask ) );
+          return true;
+        }
 
 	      //e.preventDefault();
 	      return false;

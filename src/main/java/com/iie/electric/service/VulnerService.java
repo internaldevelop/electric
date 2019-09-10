@@ -66,9 +66,9 @@ public class VulnerService{
 			}
 		}
 
-        if(pageBean!=null){
-            sb.append(" limit "+pageBean.getStart()+","+pageBean.getPageSize());
-        }
+//        if(pageBean!=null){
+//            sb.append(" limit "+pageBean.getStart()+","+pageBean.getPageSize());
+//        }
         String SQL_extend=sb.toString();
         List<Vulner> vulnerList=vulnerDao.getVulnerList(SQL_extend);
 		return vulnerList;
@@ -255,7 +255,7 @@ public class VulnerService{
 //                poc_message.put("验证程序脚本文件必须是以漏洞编号命名加\".py\"结尾的文件，请检查文件名！");
 //            }
             if (!Ori_Name.trim().equals(vul_id+".py")) {
-                poc_message.put("验证程序脚本文件必须是以漏洞编号命名加\".py\"结尾的文件，请检查文件名！");
+                poc_message.put("验证程序脚本文件必须是以漏洞编号命名加\".py\"结尾的文件，确保文件正确后重新上传！");
             }
             else {
                 List<String> str_line=new ArrayList<String>();

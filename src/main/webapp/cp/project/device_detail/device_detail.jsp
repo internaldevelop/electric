@@ -68,7 +68,7 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- END THEME STYLES -->
 <link rel="shortcut icon" href="<c:url value="/public/img/favicon.ico" />" type="image/x-icon" />
 
-<link rel="stylesheet" href="<c:url value="/public/css/device_detail-b7003e3eba.css" />"
+<link rel="stylesheet" href="<c:url value="/public/css/device_detail-3e28644f5f.css" />"
 	type="text/css">
 
 <script
@@ -97,13 +97,13 @@ License: You must have a valid license purchased only from themeforest(the above
 <body
 	class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
 	<!-- BEGIN HEADER -->
-	<%@include file="/cp/public/head.jsp"%>
+	<%@include file="/WEB-INF/cp/public/head.jsp"%>
 	<!-- END HEADER -->
 	<div class="clearfix"></div>
 	<!-- BEGIN CONTAINER -->
 	<div class="page-container">
 		<!-- BEGIN SIDEBAR -->
-		<%@include file="/cp/public/sidebar.jsp"%>
+		<%@include file="/WEB-INF/cp/public/sidebar.jsp"%>
 		<script>
 			$('.page-sidebar-menu li.project_list').addClass('active open');
 		</script>
@@ -193,7 +193,7 @@ License: You must have a valid license purchased only from themeforest(the above
 							</div>
 						</div>
 						<div class="item">
-							<label>ajax: </label>
+							<label>漏洞详情: </label>
 							<div class="sub-item">
 								<div class="deep-scan">
 									<button class="c-btn" data-ip="${ip}" data-method="exploit">exploit</button>
@@ -207,37 +207,6 @@ License: You must have a valid license purchased only from themeforest(the above
 								</div>
 								
 							</div>
-						</div>
-						<div class="item">
-							<label>漏洞描述: </label>
-							<c:if test="${fn:length(vulDes) gt 0}">
-								<div class="sub-item vul-detail">
-									<table class="table table-bordered">
-										<thead>
-											<tr>
-												<th>序号</th>
-												<th>网络服务</th>
-												<th>漏洞名称</th>
-												<th>漏洞类型</th>
-												<th>漏洞等级</th>
-												<th>修复建议</th>
-											</tr>
-										</thead>
-										<tbody>
-											<c:forEach items="${vulDes}" var="item" varStatus="ul">
-												<tr>
-													<td class="index">${ul.getCount()}</td>
-													<td>${item.getService()}</td>
-													<td>${item.getName()}</td>
-													<td>${item.getStyle()}</td>
-													<td>${item.getGrade()}</td>
-													<td>${item.getSolution()}</td>
-												</tr>
-											</c:forEach>
-										</tbody>
-									</table>
-								</div>
-							</c:if>
 						</div>
 					</div>
 				</div>
@@ -292,7 +261,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		</div>
 		<!-- /.modal-dialog -->
 	</div>
-	<%@include file="/cp/public/footer.jsp"%>
+	<%@include file="/WEB-INF/cp/public/footer.jsp"%>
 	<!-- END FOOTER -->
 	<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 	<!-- BEGIN CORE PLUGINS -->
@@ -354,9 +323,9 @@ License: You must have a valid license purchased only from themeforest(the above
 		src="<c:url value="/public/lib/react-15.3.0/build/react-dom.js" />"
 		type="text/javascript"></script>
 	<script src="<c:url value="/public/lib/jquery.validate.min.js" />" type="text/javascript"></script>
-	<script src="<c:url value="/public/js/subscribe-6dce02cc75.js" />"
+	<script src="<c:url value="/public/js/subscribe-2fc74f0121.js" />"
 		type="text/javascript"></script>
-	<script src="<c:url value="/public/js/device_detail-3e8841a6e8.js" />" type="text/javascript"></script>
+	<script src="<c:url value="/public/js/device_detail-2725ba3369.js" />" type="text/javascript"></script>
 
 	<!-- END JAVASCRIPTS -->
 </body>

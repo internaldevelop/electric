@@ -6,6 +6,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
+
 import com.iie.electric.module.TaskSchedueModule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,8 +30,13 @@ public class ProjectService extends BaseService {
     @Autowired
     private TaskSchedueModule taskSchedueModule;
 
-    public PageNation getProjectPageNation(int page, int perPage) {
-        int allNum = projectDao.getAllProjectNum();
+    public PageNation getProjectPageNation(int page, int perPage, User user) {
+        int allNum = 0;
+        if (user.getUserType().equals("admin")) {
+            allNum = projectDao.getAllProjectNum("%");
+        } else if (user.getUserType().equals("checker")) {
+            allNum = projectDao.getAllProjectNum(user.getUserName());
+        }
         return super.getPageNation(allNum, page, perPage);
     }
 
@@ -49,9 +55,9 @@ public class ProjectService extends BaseService {
     }
 
     //获取项目的总数
-    public int getAllProjectNum() {
-        return projectDao.getAllProjectNum();
-    }
+//    public int getAllProjectNum() {
+//        return projectDao.getAllProjectNum();
+//    }
 
     //删除指定项目(删除项目的同时删除项目对应的所有任务、任务结果、报表)
     public int deleteProject(int projectID) {
@@ -166,7 +172,7 @@ public class ProjectService extends BaseService {
     public void reduceProjectTaskNum(int projectID) {
         //在删除任务时，设置对应项目的执行次数减1.
         int taskExecNum = getProjectTaskExecNum(projectID);
-        if(taskExecNum > 0){
+        if (taskExecNum > 0) {
             projectDao.reduceProjectTaskNum(projectID);
         }
     }

@@ -160,7 +160,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <div class="col-md-8">
                                 <form action="${pageContext.request.contextPath}/vulner_manage/backup/list" method="post">
                                     <div class="input-group" style="width: 300px">
-                                        <input type="text" class="form-control" maxlength="100" name="time" value="${s_backup.time }" placeholder="请输入查询关键字...">
+                                        <input type="text" class="form-control" name="time" value="${s_backup.time }" placeholder="请输入查询关键字...">
                                         <span class="input-group-btn">
                                             <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span>&nbsp;查询</button>
                                         </span>
@@ -206,14 +206,9 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </tbody>
                             </table>
 
-                            <nav >
-                                <ul class="pagination">
-                                    ${pageCode }
-                                </ul>
-                            </nav>
-    <%--表结束--%>
+                               <%--表结束--%>
                         <div class="page relative center">
-                            <ul id="project-page"></ul>
+                            <ul id="project-page" class="pagination"></ul>
                             <div class="page-mask"></div>
                         </div>
                     </div>

@@ -12,10 +12,6 @@ public class GlobalVarService {
 
     public int getLogFlag() {
         GlobalVar globalVar = globalVarDao.getGlobalVar("log");
-        if(globalVar != null){
-            System.out.println(globalVar.getName());
-            System.out.println(globalVar.getValue());
-        }
         if (globalVar != null) {
             return Integer.parseInt(globalVar.getValue());
         }

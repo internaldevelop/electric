@@ -4,7 +4,7 @@ width:130px!important;}
     margin-left: 130px!important;
 }
 .page-content-wrapper .page-content{
-	padding:40px 15px!important;
+  padding:40px 15px!important;
 }
 .row{
 margin-left:0px!important;
@@ -13,3 +13,27 @@ margin-right:0px!important;
 .system-title{
     font-size:24px;
 }
+.userTable{
+  table-layout: fixed;
+}
+.userTable th:first-child{
+  width:5%;
+}
+.userTable th:nth-child(2) , .userTable th:nth-child(3) , .userTable th:nth-child(5){
+  width:15%;
+}
+.userTable th:nth-child(4) {
+  width:10%;
+}
+.userTable td {
+       /* width: 100%; */
+    word-break: break-all;
+    text-overflow: ellipsis;
+    width: 100%;
+    overflow: hidden;
+    
+}
+
+
+
+

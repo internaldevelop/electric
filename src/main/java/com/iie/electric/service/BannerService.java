@@ -42,7 +42,7 @@ public class BannerService extends BaseService {
         Map<String, Object> modelMap = new HashMap<>();
         String fileName;
         if (banner.getProtocol() != null) {
-            fileName = banner.getProtocol() + "-req";
+            fileName = banner.getProtocol() + "-" + banner.getPort() + "-req";
             banner.setFileName(fileName);
         } else {
             modelMap.put("bizNo", -1);
@@ -53,7 +53,7 @@ public class BannerService extends BaseService {
             int count = probeConfigDao.countSectionNum(banner.getPort() + "-" + banner.getProtocol());
             if (count > 0) {
                 modelMap.put("bizNo", -1);
-                modelMap.put("bizMsg", "探测协议已经存在");
+                modelMap.put("bizMsg", "探测协议对应的端口已经存在");
                 return modelMap;
             }
             //上传指纹探测包到指定的目录下
@@ -68,7 +68,7 @@ public class BannerService extends BaseService {
                 }
             } else {
                 modelMap.put("bizNo", -1);
-                modelMap.put("bizMsg", "指纹探测包不能为空");
+                modelMap.put("bizMsg", "探测文件不能为空");
                 return modelMap;
             }
             Timestamp addTime = new Timestamp(System.currentTimeMillis());
@@ -103,7 +103,7 @@ public class BannerService extends BaseService {
     //列出所有的指纹
     public List<Banner> getPageBanner(int page, int perPage) {
         List<Banner> bannerList = new ArrayList<>();
-        int begin = (page - 1) * page;
+        int begin = (page - 1) * perPage;
         int offset = perPage;
         List<Banner> list = userBannerDao.getPageBanner(begin, offset);
         if (list != null) {
@@ -127,7 +127,7 @@ public class BannerService extends BaseService {
             return Constant.FAIL;
         }
         //删除文件
-        File file = new File(bannerPath + banner.getProtocol() + "-req");
+        File file = new File(bannerPath + banner.getProtocol() + "-" + banner.getPort() + "-req");
         if (file.exists()) {
             file.delete();
         }

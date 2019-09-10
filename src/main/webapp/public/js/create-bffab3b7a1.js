@@ -34,10 +34,18 @@ $( function() {
 
 	}, "输入格式不正确");
 
+	$.validator.addMethod("decNumber" , function(value, element, params){
+		if (value.length > 50) {
+			return false;
+		}
+		return true;
+	} , '输入字符不能超过50个')
+
 	validateObj = config.validate( {
 	    rules: {
 	    	projectName: {
 	    		required: true,
+	    		decNumber:true,
 	    		remote: {
                     type: "GET",
                     url: "project_exist",
@@ -48,6 +56,9 @@ $( function() {
                         }
                     }
                 }
+	    	},
+	    	describe:{
+					decNumber:true,
 	    	},
 	    	target: {
 	    		required: true,

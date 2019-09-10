@@ -215,7 +215,7 @@ public class TaskService extends BaseService {
         taskOverView.setTakingTime(task.getTakingTime());
         taskOverView.setProgress(progressList);
         taskOverView.setTotalProgress(task.getTotalProgress());
-        taskOverView.setErrorList(errorList);
+//        taskOverView.setErrorList(errorList);
         taskOverView.setRealBandWidth(task.getUsedFlow());
         taskOverView.setReportFormPath(task.getReportUrl());
         taskOverView.setProcess(process);

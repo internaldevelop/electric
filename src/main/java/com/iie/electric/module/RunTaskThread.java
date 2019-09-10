@@ -37,6 +37,10 @@ public class RunTaskThread extends Thread {
         this.task = task;
         this.bandwidth = bd;
         try {
+            String killCmd = "kill -9 `ps -ef | grep '/root/CyberPecker' | grep -v grep | awk '{print $2}'`";
+            Process killPr = Runtime.getRuntime().exec(new String[]{"/bin/sh", "-c", killCmd});
+            killPr.waitFor();
+
             //调用控制子软件执行任务并且捕获其标准输入、输出、错误流
             Process pr = rt.exec(new String[]{"/bin/sh", "-c", cmd});
             InputStream inputStream = pr.getInputStream();
@@ -48,7 +52,7 @@ public class RunTaskThread extends Thread {
             taskSchedueModule.updateProjectState(task.getProjectID(), "正在执行");
             taskSchedueModule.addProjectTaskNum(task.getProjectID());
             startNetUsageThread();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -89,7 +93,7 @@ public class RunTaskThread extends Thread {
                 taskSchedueModule.updateTaskState(task.getTaskID(), "异常结束");
             }
             taskSchedueModule.updateProjectState(task.getProjectID(), "空闲"); //任务结束后把其对应的项目置为空闲
-            taskSchedueModule.generateReport(task.getTaskID(),task.getProjectID());  //生成报表
+            taskSchedueModule.generateReport(task.getTaskID(), task.getProjectID());  //生成报表
             taskSchedueModule.setTaskEndFlag(task.getTaskID());// 设置任务是否执行完成状态设置为1标识执行完
             taskSchedueModule.setRunningThread(null);
             taskSchedueModule.tryScanTask();// 每次任务执行完，立马尝试执行下一个，而不是等轮训

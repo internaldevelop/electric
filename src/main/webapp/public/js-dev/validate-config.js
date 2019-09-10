@@ -3,7 +3,7 @@ $.extend($.validator.messages, {
     ip: "输入格式不正确",
     cird: '输入格式不正确',
     max: "输入超过了最大值",
-	min: "输入小于最小值",
+    min: "输入小于最小值",
     mask: "网关不可达",
     remote: "该名称已存在"
 });
@@ -17,7 +17,8 @@ $.validator.addMethod("ip",function(value,element,params){
 
     return ipReg.test( value );
 
-},"输入格式不正确");
+},"IP格式不正确");
+
 
 $.validator.addMethod("mask",function(value,element,params){
     var ipArr = $( '#config input[name="IP"]' ).val().split( '.' ),

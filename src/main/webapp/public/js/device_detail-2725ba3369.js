@@ -70,7 +70,7 @@ var Table = React.createClass( {displayName: "Table",
 
 var TableCell = React.createClass( {displayName: "TableCell",
     render: function() {
-      return React.createElement("tr", {"data-vulname": this.props.data.name}, 
+      return React.createElement("tr", {"data-vulname": this.props.data.name , "data-vulId":this.props.data.vulID}, 
               React.createElement("td", null, this.props.index), 
               React.createElement("td", null, this.props.data.service), 
               React.createElement("td", null, this.props.data.name), 
@@ -79,8 +79,8 @@ var TableCell = React.createClass( {displayName: "TableCell",
               React.createElement("td", null, this.props.data.solution), 
               React.createElement("td", null, this.props.data.source), 
               React.createElement("td", {className: "checked-state"}, this.props.data.checkedState), 
-              React.createElement("td", {className: "operate"}, 
-                this.props.data.hasCheckedScript == 1 ?
+              React.createElement("td", {className: "operate" , "data-flag":this.props.data.flag}, 
+                (this.props.data.hasCheckedScript == 1 || this.props.data.flag == 1) ?
                     React.createElement("a", {className: "check-vul", href: "javascript:;"}, "验证") : ''
               )
             )
@@ -266,25 +266,48 @@ var verifyVulObj = ( function( $par, $modal ) {
   }
 
   //获取漏洞脚本
-  function getVerifyPara( vulName, successCb ) {
+  function getVerifyPara( vulName, successCb ,flag,vulId ) {
     $running.show();
-
-    $.ajax( {
-      method: 'GET',
-      url: 'verify_parameter?' + getIDs() + '&vulName=' + vulName + '&_=' + Math.random(),
-      dataType: 'JSON'
-    } ).done( function( json ) {
-      if( json.bizNo > 0 ) {
-        //生成用户需填写的内容
-        successCb( json.parameter );
-      } else {
-        pop.error( json.bizMsg );
-      }
-    } ).fail( function() {
-      pop.error( requestError );
-    } ).always( function() {
-      $running.hide();
-    } );
+    if (flag == 1) {
+        $.ajax({
+          url: './make_use_vul?'+getIDs()+'&vulId='+vulId+ '&_=' + Math.random(),
+          type: 'get',
+          dataType: 'json',
+        })
+        .done(function(json) {
+              if (json.bizNo > 0) {
+                pop.success( "验证成功" );
+                updateVulList(G.ip);
+              }   else{
+                pop.error(json.bizMsg);
+              }
+        })
+        .fail(function() {
+          pop.error( requestError );
+        })
+        .always(function() {
+           $running.hide();
+        });
+        
+    }else{
+           $.ajax( {
+        method: 'GET',
+        url: 'verify_parameter?' + getIDs() + '&vulName=' + vulName + '&_=' + Math.random(),
+        dataType: 'JSON'
+      } ).done( function( json ) {
+        if( json.bizNo > 0 ) {
+          //生成用户需填写的内容
+          successCb( json.parameter );
+        } else {
+          pop.error( json.bizMsg );
+        }
+      } ).fail( function() {
+        pop.error( requestError );
+      } ).always( function() {
+        $running.hide();
+      } );
+    }
+ 
   }
 
   ret = {
@@ -305,7 +328,8 @@ var verifyVulObj = ( function( $par, $modal ) {
 
       $par.delegate( '.check-vul', 'click', function( e ) {
         var $activeTr = $( this ).parent().parent();
-
+        var flag = $(this).parent().data("flag");
+         ret.vulId  = $activeTr.data( 'vulid' );
         if( !isCheckingVul ) {
           ret.$activeIndex = $activeTr.index();
           ret.vulName = $activeTr.data( 'vulname' );
@@ -316,7 +340,7 @@ var verifyVulObj = ( function( $par, $modal ) {
               ret.removeValid();
               ret.makeModalContent( paraList );
               ret.addValid( paraList.param );
-            } );
+            } , flag , ret.vulId);
           }
 
           //绑定确定按钮点击事件
@@ -344,7 +368,6 @@ var verifyVulObj = ( function( $par, $modal ) {
         //生成参数列表
         for( i = 0; i < parameter.param.length; i++ ) {
           temp = parameter.param[ i ];
-
           //生成input元素
           item = '<input name="' + temp.name + '" type="text" class="form-control" placeholder="' + temp.defaultValue + '">';
           htmlStr += '<div class="form-group">' +
@@ -358,16 +381,21 @@ var verifyVulObj = ( function( $par, $modal ) {
         }
 
         //生成payload
-        item = '<select name="payload" class="form-control">';
-        for( i = 0; i < parameter.payload.length; i++ ) {
-          temp = parameter.payload[ i ];
-          item += '<option value="' + temp +'">' + temp + '</option>';
-        }
-        item += '</select>';
+       console.log(parameter);
+       if (parameter.payload.length == 0) {
+       	 	 item = '<select name="payload" class="form-control" disabled></select>';
+       }else{
+       	 item = '<select name="payload" class="form-control">';
+	        for( i = 0; i < parameter.payload.length; i++ ) {
+	          temp = parameter.payload[ i ];
+	          item += '<option value="' + temp +'">' + temp + '</option>';
+	        }
+        	item += '</select>';
+       }
+      
 
         htmlStr += '<div class="form-group">' +
-                  '<label class="col-md-3 control-label">' + 'payload' +
-                        '<span class="required" aria-required="true">* </span>' +
+                  '<label class="col-md-3 control-label">' + 'payload' + 
                   '</label>' +
                   '<div class="col-md-7">' +
                         item +

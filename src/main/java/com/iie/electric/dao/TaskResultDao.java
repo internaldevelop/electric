@@ -41,4 +41,8 @@ public interface TaskResultDao {
     //保存深度扫描的结果
     @Insert("replace into task_result values(#{taskID},#{projectID},#{ip},#{ipInfo})")
     void saveDeepScanResultResult(@Param("taskID") int taskID, @Param("projectID") int projectID, @Param("ip") String ip, @Param("ipInfo") String ipInfo);
+
+    @Update("update task_result set ip_info = #{ipInfo} where project_id = #{projectID} and task_id = #{taskID} and ip_addr = #{ip}")
+    void updateTaskResult(@Param("taskID") int taskID, @Param("projectID") int projectID, @Param("ip") String ip, @Param("ipInfo") String ipInfo);
+
 }

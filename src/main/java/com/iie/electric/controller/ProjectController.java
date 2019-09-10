@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.iie.electric.entityview.*;
 import com.iie.electric.module.ExploitScanModule;
+import com.iie.electric.module.MakeUseVulModule;
 import com.iie.electric.module.OpenVasScanModule;
 import com.iie.electric.module.TaskSchedueModule;
 import com.iie.electric.service.*;
@@ -43,6 +44,8 @@ public class ProjectController extends BaseController {
     private EmailService emailService;
     @Autowired
     private LogService logService;
+    @Autowired
+    private MakeUseVulModule makeUseVulModule;
 
     //加载项目列表页面
     @RequestMapping(value = "/project_list")
@@ -60,7 +63,7 @@ public class ProjectController extends BaseController {
                                                   @RequestParam("perPage") int perPage) {
         Map<String, Object> modelMap = new HashMap<>();
         User user = super.getSessionUser(request);
-        PageNation pageNation = projectService.getProjectPageNation(page, perPage);
+        PageNation pageNation = projectService.getProjectPageNation(page, perPage, user);
         List<Project> projectList = projectService.getPageProjectList(page, perPage, user);
         modelMap.put("bizNo", 1);
         modelMap.put("bizMsg", "");
@@ -90,10 +93,10 @@ public class ProjectController extends BaseController {
             }
         }
         super.setSessionState(request, createState);
-        if(createState > 0){
+        if (createState > 0) {
             User user = getSessionUser(request);
-            String desc = "用户"+user.getUserName()+"创建项目：" + project.getProjectName() +",目标网段为：" + project.getTarget();
-            logService.loggerCreateProject(user.getUserName(),desc);
+            String desc = "用户" + user.getUserName() + "创建项目：" + project.getProjectName() + ",目标网段为：" + project.getTarget();
+            logService.loggerCreateProject(user.getUserName(), desc);
             taskSchedueModule.tryCreateTask(project);// 任务调度模块对于新建项目的处理
         }
         return "redirect:/project/create_project";
@@ -109,7 +112,7 @@ public class ProjectController extends BaseController {
     //删除项目
     @RequestMapping(value = "/delete_project")
     @ResponseBody
-    public Map<String, Object> deleteProject(HttpServletRequest request ,@RequestParam("projectID") int projectID) {
+    public Map<String, Object> deleteProject(HttpServletRequest request, @RequestParam("projectID") int projectID) {
         Map<String, Object> modelMap = new HashMap<>();
         int bizNo = projectService.deleteProject(projectID);
         String msg = "";
@@ -118,8 +121,8 @@ public class ProjectController extends BaseController {
         }
         if (bizNo > 0) {
             User user = getSessionUser(request);
-            String desc = "用户" + user.getUserName() + "删除标号为：" + projectID+"项目";
-            logService.loggerDeleteProject(user.getUserName(),desc);
+            String desc = "用户" + user.getUserName() + "删除标号为：" + projectID + "项目";
+            logService.loggerDeleteProject(user.getUserName(), desc);
         }
         modelMap.put("bizNo", bizNo);
         modelMap.put("bizMsg", msg);
@@ -196,8 +199,8 @@ public class ProjectController extends BaseController {
     @RequestMapping(value = "/delete_task")
     @ResponseBody
     public Map<String, Object> deleteTask(HttpServletRequest request,
-            @RequestParam("projectID") int projectID,
-            @RequestParam("taskID") int taskID) {
+                                          @RequestParam("projectID") int projectID,
+                                          @RequestParam("taskID") int taskID) {
         Map<String, Object> modelMap = new HashMap<>();
         int bizNo = taskService.deleteTask(projectID, taskID);
         String msg = "";
@@ -207,7 +210,7 @@ public class ProjectController extends BaseController {
         if (bizNo > 0) {
             User user = getSessionUser(request);
             String desc = "用户" + user.getUserName() + "删除项目id为：" + projectID + "任务id为：" + taskID + "的任务";
-            logService.loggerDeleteTask(user.getUserName(),desc);
+            logService.loggerDeleteTask(user.getUserName(), desc);
         }
         modelMap.put("bizNo", bizNo);
         modelMap.put("bizMsg", msg);
@@ -401,6 +404,21 @@ public class ProjectController extends BaseController {
         return modelMap;
     }
 
+    //
+    @RequestMapping(value = "/make_use_vul")
+    @ResponseBody
+    public Map<String, Object> useVul(@RequestParam("vulId") String vulId,
+                                      @RequestParam("projectID") int projectID,
+                                      @RequestParam("taskID") int taskID,
+                                      @RequestParam("ip") String ip) {
+        Map<String, Object> modelMap = new HashMap<>();
+        makeUseVulModule.makeUseVul(vulId);
+        taskResultService.updateVulCheckedState(projectID, taskID, ip, vulId);
+        modelMap.put("bizNo", 1);
+        modelMap.put("bizMsg", "");
+        return modelMap;
+    }
+
     //发送任务报表
     @RequestMapping(value = "/sendForm")
     @ResponseBody
@@ -413,9 +431,9 @@ public class ProjectController extends BaseController {
         modelMap.put("bizNo", sendStateMap.get("bizNo"));
         modelMap.put("bizMsg", sendStateMap.get("bizMsg"));
         int bizNo = (int) sendStateMap.get("bizNo");
-        if(bizNo < 0){
+        if (bizNo < 0) {
             String msg = "发送任务报表失败,任务id为： " + taskID;
-            logService.loggerError(user.getUserName(),msg);
+            logService.loggerError(user.getUserName(), msg);
         }
         return modelMap;
     }

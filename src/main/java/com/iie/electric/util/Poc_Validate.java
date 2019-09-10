@@ -126,6 +126,9 @@ public class Poc_Validate {
                 }
             }
         }
+        if(message.size() > 0){
+            message.add("确保文件正确后重新上传");
+        }
         poc_status_message.put("message", message);
         return poc_status_message;
     }

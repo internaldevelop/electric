@@ -25,7 +25,12 @@ public class InitAfterStartListener implements ServletContextListener {
 
     @Override
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
-
+        try {
+            String cmd = "kill -9 `ps -ef | grep '/root/CyberPecker' | grep -v grep | awk '{print $2}'`";
+            Runtime.getRuntime().exec(new String[]{"/bin/sh", "-c", cmd});
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

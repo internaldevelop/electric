@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<!-- 
+<!--
 Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.1.1
 Version: 3.0.1
 Author: KeenThemes
@@ -91,13 +91,13 @@ License: You must have a valid license purchased only from themeforest(the above
 <body
 	class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
 	<!-- BEGIN HEADER -->
-	<%@include file="/cp/public/head.jsp"%>
+	<%@include file="/WEB-INF/cp/public/head.jsp"%>
 	<!-- END HEADER -->
 	<div class="clearfix"></div>
 	<!-- BEGIN CONTAINER -->
 	<div class="page-container">
 		<!-- BEGIN SIDEBAR -->
-		<%@include file="/cp/public/sidebar.jsp"%>
+		<%@include file="/WEB-INF/cp/public/sidebar.jsp"%>
 		<script>
 			$('.page-sidebar-menu li.create_project').addClass('active open');
 			/*$('.page-sidebar-menu li.project').find('.arrow').addClass('open');
@@ -125,7 +125,7 @@ License: You must have a valid license purchased only from themeforest(the above
 				<div class="row">
 					<div class="form col-lg-8 col-md-12 col-sm-12 col-xs-12">
 						<form action="create" id="config" method="POST"
-							class="form-horizontal" enctype="multipart/form-data" role="form">
+							class="form-horizontal"  role="form">
 							<div class="col-md-12 area">
 								<p class="sub-title">基本信息</p>
 								<div class="page page1">
@@ -133,269 +133,24 @@ License: You must have a valid license purchased only from themeforest(the above
 										<label class="control-label col-md-3">项目名称 <span
 											class="required" aria-required="true"> * </span> </label>
 										<div class="col-md-7">
-											<input name="projectName" type="text" class="form-control">
+											<input name="projectName" type="text" maxlength="100" class="form-control">
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="control-label col-md-3">项目描述&nbsp;&nbsp;&nbsp;</label>
 										<div class="col-md-7">
-											<textarea name="describe" class="form-control" rows="2"></textarea>
+											<textarea name="describe" maxlength="500" class="form-control" rows="2"></textarea>
 										</div>
 									</div>
 									<div class="form-group">
 										<label class="control-label col-md-3">扫描范围 <span
 											class="required" aria-required="true">* </span> </label>
 										<div class="col-md-7">
-											<textarea name="target" class="form-control" rows="3"></textarea>
+											<textarea name="target" maxlength="1000" class="form-control" rows="3"></textarea>
 											<span class="help-block">
 												<p>每行一个IP配置</p>
 												<p>支持格式: 单个IP——10.0.0.1, CIDR——10.0.0.1/16
 											</span>
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="control-label col-md-3">黑名单 </label>
-										<div class="col-md-7">
-											<input name="blackListFile" type="file" accept=".txt,.json">
-											<span class="help-block">
-												<p>支持.txt和.json扩展名的文本文件, 其他类型的文件可能会导致异常错误</p>
-												<p>每行一个IP配置</p>
-												<p>支持格式: 单个IP——10.0.0.1, CIDR——10.0.0.1/16
-												</p>
-											</span>
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="control-label col-md-3">任务类型 <span
-											class="required" aria-required="true"> * </span> </label>
-										<div class="col-md-2">
-											<select class="form-control cycle-trl" name="projectFlag">
-												<option value="0" selected>一次</option>
-												<!--<option value="1">周期</option>-->
-											</select>
-										</div>
-									</div>
-									<div class="form-group cycle">
-										<label class="control-label col-md-3">周期间隔 <span
-											class="required" aria-required="true"> * </span> </label>
-										<div class="col-md-3">
-											<input class="ignore" name="space" type="text" size="5" value="0"> 天
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-12 area extra-info">
-								<div class="portlet light bordered">
-									<div class="portlet-title tabbable-line float">
-										<ul class="nav nav-tabs">
-											<li class="active" data-page="page2"><a href="#hd"
-												data-toggle="tab" aria-expanded="true"> 主机发现 </a>
-											</li>
-											<li data-page="page3"><a href="#sc" data-toggle="tab"
-												aria-expanded="false"> 服务探测 </a>
-											</li>
-											<li data-page="page4"><a href="#vm" data-toggle="tab"
-												aria-expanded="false"> 漏洞挖掘 </a>
-											</li>
-										</ul>
-									</div>
-									<div class="portlet-body util-btn-margin-bottom-5">
-										<div class="tab-content" style="display: none;">
-											<div class="tab-pane active" id="hd">
-												<div class="page page2">
-													<div class="form-group">
-														<label class="control-label col-md-3">探测强度等级 <span
-															class="required" aria-required="true">* </span> </label>
-														<div class="col-md-7">
-															<select name="intensity" class="form-control">
-																<option value="1" selected>1级(15)</option>
-																<option value="2">2级(50)</option>
-																<option value="3">3级(100)</option>
-																<option value="4">4级(500)</option>
-																<option value="5">5级(1000)</option>
-															</select> <span class="help-block"> 括号中为该等级使用的热门端口数量 </span>
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="col-md-3 control-label">探测协议 <span
-															class="required" aria-required="true">* </span> </label>
-														<div class="col-md-7">
-															<select name="protocol" class="form-control">
-																<option value="tcp" selected>TCP</option>
-																<option value="udp">UDP</option>
-																<option value="promis">TCP和UDP</option>
-															</select>
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="control-label col-md-3">额外端口 </label>
-														<div class="col-md-7">
-															<input name="hdAdditionPort" type="text"
-																class="form-control"> <span class="help-block">
-																需要额外扫描的tcp端口或端口段, 如有多个用空格隔开, 例如: 1-10 80 </span>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="tab-pane" id="sc">
-												<div class="form-group page3">
-													<label class="control-label col-md-3">扫描类型 <span
-														class="required" aria-required="true">* </span> </label>
-													<div class="col-md-7">
-														<div class="mt-checkbox-inline scan-type">
-															<label class="mt-checkbox mt-checkbox-outline"> <input
-																name="tcpTmp" type="checkbox" checked>TCP: <span></span>
-															</label> <select name="tcpList" class="form-control">
-																<option value="sS" selected>sS</option>
-																<option value="sA">sA</option>
-																<option value="sT">sT</option>
-																<option value="sF">sF</option>
-																<option value="sI">sI</option>
-																<option value="sM">sM</option>
-																<option value="sN">sN</option>
-																<option value="sW">sW</option>
-																<option value="sX">sX</option>
-															</select> <label class="mt-checkbox mt-checkbox-outline">
-																<input name="udpTmp" type="checkbox" value="sU">UDP:sU
-																<span></span> </label> <label
-																class="mt-checkbox mt-checkbox-outline"> <input
-																name="sctpTmp" type="checkbox" value="sY">SCTP:sY
-																<span></span> </label> <input name="scanType" type="text"
-																value="sS">
-														</div>
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="control-label col-md-3">热门端口 <span
-														class="required" aria-required="true">* </span> </label>
-													<div class="col-md-7">
-														<input name="topPorts" type="number" min="1" max="1000"
-															value="50" size=10>
-															<span class="help-block">
-															热门端口数范围1~1000 </span>
-															<span class="help-block">
-															系统会自动扫描视频监控协议常用端口 </span>
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="control-label col-md-3">开启操作系统探测 <span
-														class="required" aria-required="true">* </span> </label>
-													<div class="col-md-7">
-														<div class="mt-checkbox-inline">
-															<label class="mt-radio mt-radio-outline">否 <input
-																type="radio" value="0" name="enableOsDetec" checked>
-																<span></span> </label> <label class="mt-radio mt-radio-outline">是
-																<input type="radio" value="1" name="enableOsDetec">
-																<span></span> </label>
-														</div>
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="control-label col-md-3">开启服务版本探测 <span
-														class="required" aria-required="true">* </span> </label>
-													<div class="col-md-7">
-														<div class="mt-checkbox-inline">
-															<label class="mt-radio mt-radio-outline">否 <input
-																type="radio" value="0" name="enableVersionDetec" checked>
-																<span></span> </label> <label class="mt-radio mt-radio-outline">是
-																<input type="radio" value="1" name="enableVersionDetec">
-																<span></span> </label>
-														</div>
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="control-label col-md-3">服务版本探测强度 </label>
-													<div class="col-md-7">
-														<select name="versionIntensity" class="form-control">
-															<option value="1" selected>1</option>
-															<option value="2">2</option>
-															<option value="3">3</option>
-															<option value="4">4</option>
-															<option value="5">5</option>
-															<option value="6">6</option>
-															<option value="7" selected>7</option>
-															<option value="8">8</option>
-															<option value="9">9</option>
-														</select> <span class="help-block"> 1. 此功能需要开启服务版本探测<br>
-															2. 强度等级越高, 探测结果越准确, 同时消耗时间越多 </span>
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="control-label col-md-3">额外TCP端口 </label>
-													<div class="col-md-7">
-														<input name="sdAdditionPortTcp" type="text"
-															class="form-control"> <span class="help-block">
-															需要额外扫描的tcp端口或端口段, 如有多个用空格隔开, 例如: 1-10 80 </span>
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="control-label col-md-3">额外UDP端口 </label>
-													<div class="col-md-7">
-														<input name="sdAdditionPortUdp" type="text"
-															class="form-control"> <span class="help-block">
-															需要额外扫描的tcp端口或端口段, 如有多个用空格隔开, 例如: 1-10 80 </span>
-													</div>
-												</div>
-												<div class="form-group">
-													<label class="control-label col-md-3">禁止扫描端口 </label>
-													<div class="col-md-7">
-														<input name="excludePorts" type="text"
-															class="form-control"> <span class="help-block">
-															禁止扫描的端口或端口段, 如有多个用空格隔开, 例如: 1-10 80 </span>
-													</div>
-												</div>
-											</div>
-											<div class="tab-pane" id="vm">
-												<div class="page page4">
-													<div class="form-group">
-														<label class="control-label col-md-3">弱口令探测协议 </label>
-														<div class="col-md-7">
-															<div class="mt-checkbox-inline">
-																<label class="mt-checkbox mt-checkbox-outline">
-																	<input name="probeModule" type="checkbox" value="ssh">ssh
-																	<span></span> </label> <label
-																	class="mt-checkbox mt-checkbox-outline"> <input
-																	name="probeModule" type="checkbox" value="ftp">ftp
-																	<span></span> </label> <label
-																	class="mt-checkbox mt-checkbox-outline"> <input
-																	name="probeModule" type="checkbox" value="rtsp">rtsp
-																	<span></span> </label> <label
-																	class="mt-checkbox mt-checkbox-outline"> <input
-																	name="probeModule" type="checkbox" value="telnet">telnet
-																	<span></span> </label>
-															</div>
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="control-label col-md-3">检测设备重启漏洞 <span
-															class="required" aria-required="true">* </span> </label>
-														<div class="col-md-7">
-															<div class="mt-checkbox-inline">
-																<label class="mt-radio mt-radio-outline">否 <input
-																	type="radio" value="0" name="enableReboot" checked>
-																	<span></span> </label> <label class="mt-radio mt-radio-outline">是
-																	<input type="radio" value="1" name="enableReboot">
-																	<span></span> </label>
-															</div>
-															<span class="help-block"> 是否检测会导致设备重启的漏洞? </span>
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="control-label col-md-3">检测更改配置文件漏洞 <span
-															class="required" aria-required="true">* </span> </label>
-														<div class="col-md-7">
-															<div class="mt-checkbox-inline">
-																<label class="mt-radio mt-radio-outline">否 <input
-																	type="radio" value="0" name="enableChange" checked>
-																	<span></span> </label> <label class="mt-radio mt-radio-outline">是
-																	<input type="radio" value="1" name="enableChange">
-																	<span></span> </label>
-															</div>
-															<span class="help-block"> 是否检测会导致修改设备配置文件的漏洞? </span>
-														</div>
-													</div>
-												</div>
-											</div>
 										</div>
 									</div>
 								</div>
@@ -425,18 +180,18 @@ License: You must have a valid license purchased only from themeforest(the above
 							<div class="form-body text-left">
 								<div class="tab-content">
 									<div class="tab-pane active" id="page1">
-										
+
 									</div>
 									<div class="tab-pane" id="page2">
-										
+
 									</div>
 
 									<div class="tab-pane" id="page3">
 										<div class="page page3">
-											
+
 									</div>
 									<div class="tab-pane" id="page4">
-										
+
 										</div>
 									</div>
 								</div>
@@ -460,7 +215,7 @@ License: You must have a valid license purchased only from themeforest(the above
 					<h4 class="modal-title"></h4>
 				</div>
 				<div class="modal-body">
-					
+
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn ok">确 定</button>
@@ -471,12 +226,12 @@ License: You must have a valid license purchased only from themeforest(the above
 		</div>
 	</div>
 	<!--提示框结束-->
-	<%@include file="/cp/public/footer.jsp"%>
+	<%@include file="/WEB-INF/cp/public/footer.jsp"%>
 	<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 	<!-- BEGIN CORE PLUGINS -->
 	<!--[if lt IE 9]>
 <script src="<c:url value="/lib/metronic/assets/global/plugins/respond.min.js" />" type="text/javascript"></script>
-<script src="<c:url value="/lib/metronic/assets/global/plugins/excanvas.min.js" />" type="text/javascript"></script> 
+<script src="<c:url value="/lib/metronic/assets/global/plugins/excanvas.min.js" />" type="text/javascript"></script>
 <![endif]-->
 
 	<script
@@ -537,15 +292,15 @@ License: You must have a valid license purchased only from themeforest(the above
 		type="text/javascript"></script>
 
 
-	<script src="<c:url value="/public/js/common-c9ce5fd9a3.js" />"
+	<script src="<c:url value="/public/js/common-5047d336cd.js" />"
 		type="text/javascript"></script>
 
 	<script src="<c:url value="/public/lib/jquery.validate.min.js" />"
 		type="text/javascript"></script>
-	<script src="<c:url value="/public/js/validate-config-9f3feb2fe8.js" />"
+	<script src="<c:url value="/public/js/validate-config-c05a002e2e.js" />"
 		type="text/javascript"></script>
 
-	<script src="<c:url value="/public/js/create-39ed00d02d.js" />"
+	<script src="<c:url value="/public/js/create-bffab3b7a1.js" />"
 		type="text/javascript"></script>
 	<!-- END JAVASCRIPTS -->
 </body>

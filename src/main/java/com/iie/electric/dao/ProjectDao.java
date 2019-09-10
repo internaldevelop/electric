@@ -11,8 +11,8 @@ import com.iie.electric.entity.Project;
 @Repository
 public interface ProjectDao {
     //获取所有的项目个数
-    @Select("select count(project_id) from project_info")
-    int getAllProjectNum();
+    @Select("select count(project_id) from project_info where checker like #{userName}")
+    int getAllProjectNum(@Param("userName") String userName);
 
     // 获取指定页数的项目
     @Results(value = {
